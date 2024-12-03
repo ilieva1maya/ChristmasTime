@@ -1,0 +1,40 @@
+.error-container {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    min-height: 75vh;  /* Make sure it takes full viewport height */
+}
+
+/* Image Styling: Make it smaller and responsive */
+.error-image {
+    max-width: 20%; /* Scale the image to 50% of its container width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Error message Styling */
+.error-message p {
+    font-size: 1.2rem;  /* Slightly larger text for visibility */
+    color: #333; /* Dark text color */
+}
+
+.error-message a {
+    color: red;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the link stand out */
+}
+
+.error-message a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+
+/* Styling for the SVG icon (hot chocolate icon) */
+.error-message svg {
+    width: 20px; /* Set a size for the SVG */
+    height: 20px;
+    margin-left: 5px; /* Space between the text and the icon */
+    vertical-align: middle; /* Align the icon vertically with the text */
+    fill: #ff6347; /* Match the icon color with the link color */
+}

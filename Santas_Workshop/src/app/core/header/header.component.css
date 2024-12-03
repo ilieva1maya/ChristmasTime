@@ -1,0 +1,103 @@
+.top-header .navbar{
+	padding: 5px 0px;
+}
+
+.top-header{
+	background: #ffffff;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	margin: 0 auto;
+	z-index: 20;
+}
+
+.top-header .navbar .navbar-collapse ul li a {
+	display: flex;
+    text-transform: capitalize;
+    font-size: 14px;
+    padding: 8px 15px;
+    position: relative;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+
+.top-header .navbar .navbar-collapse ul li a.active {
+    background: #e91327;
+    color: #ffffff;
+    border-radius: 0 15px;
+}
+
+.top-header .navbar .navbar-collapse ul li a:hover,
+.top-header .navbar .navbar-collapse ul li a:focus {
+	background: #e91327;
+    color: #ffffff;
+    border-radius: 0 15px;
+}
+
+.top-header .navbar .navbar-collapse ul li {
+    margin: 0 2px;
+}
+
+.top-header.fixed-menu{
+	width: 100%;
+	/* position: fixed; */
+	box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.06);
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+	background: #fff;
+	z-index: 20;
+}
+
+.navbar-toggler{
+	border: 2px solid #e91327;
+	border-radius: 0;
+	margin: 16px 15px;
+	padding: 10px 10px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.navbar-toggler span {
+    background: #e91327;
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 0 auto;
+        margin-top: 0px;
+    margin-top: 0px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.navbar-toggler span + span{
+	margin-top: 5px;
+}
+
+.navbar-toggler:hover {
+    border: 2px solid #e91327;
+}
+
+.navbar-toggler:hover span{
+	background: #e91327;
+}
+
+.container {
+	display: flex;
+	justify-content:space-between;
+}
+
+.navbar-nav{
+	display: flex;
+	justify-content:space-evenly;
+	vertical-align: middle;
+}
