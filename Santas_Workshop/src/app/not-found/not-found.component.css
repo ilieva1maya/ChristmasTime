@@ -32,9 +32,9 @@
 
 /* Styling for the SVG icon (hot chocolate icon) */
 .error-message svg {
-    width: 20px; /* Set a size for the SVG */
-    height: 20px;
+    width: 30px; /* Set a size for the SVG */
+    height: 30px;
     margin-left: 5px; /* Space between the text and the icon */
     vertical-align: middle; /* Align the icon vertically with the text */
-    fill: #ff6347; /* Match the icon color with the link color */
+    fill: #84615b; /* Match the icon color with the link color */
 }
