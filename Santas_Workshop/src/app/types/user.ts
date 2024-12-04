@@ -16,7 +16,6 @@
 export interface UserForAuth {
     nickName: string;
     email: string;
-    beardLength: string;
     image: string;
     password: string;
     id: string;
