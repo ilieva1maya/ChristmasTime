@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatePresentComponent } from './create-present/create-present.component';
+import { WarehouseComponent } from './warehouse/warehouse.component';
 
 const routes: Routes = [
   // {
@@ -14,6 +15,11 @@ const routes: Routes = [
       path: 'create-present',
       component: CreatePresentComponent,
       // canActivate: [AuthActivate]
+  },
+  {
+    path: 'warehouse',
+    component: WarehouseComponent,
+    // canActivate: [AuthActivate]
   }
 ];
 
