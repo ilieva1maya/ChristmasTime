@@ -1,0 +1,108 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    margin: 0;
+  }
+  
+  /* Main container styling */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Form container styling */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering content horizontally */
+    justify-content: center; /* Centering content vertically */
+    background-color: #fff;
+    background-image: url('../../../assets/images/presents.jpg'); /* Add background image */
+    background-size: cover; /* Ensures the background image covers the container */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Ensures no repeating of the background image */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center; /* Centers text inside the container */
+  }
+  
+  /* Form element styles */
+  .create-item-form {
+    width: 100%;
+  }
+  
+  /* Styling each form-group */
+  .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  /* Label styling */
+  label {
+    display: block;
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  
+  /* Input styling */
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #007bff;
+  }
+  
+  textarea {
+    resize: vertical;
+    height: 120px;
+  }
+  
+  /* Button styling */
+  button.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  button.submit-btn:active {
+    background-color: #003d7a;
+  }
