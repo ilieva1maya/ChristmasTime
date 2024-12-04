@@ -13,34 +13,35 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor() {}
+  // constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
-  form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(5)]],
-    email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
-    tel: [''],
-    passGroup: this.fb.group({
-      password: ['', [Validators.required, ]],
-      rePassword: ['', [Validators.required, ]],
-    }, {
-      validators: [matchPasswordsValidator('password', 'rePassword')]
-    }),
-  })
+  // form = this.fb.group({
+  //   username: ['', [Validators.required, Validators.minLength(5)]],
+  //   email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
+  //   tel: [''],
+  //   passGroup: this.fb.group({
+  //     password: ['', [Validators.required, ]],
+  //     rePassword: ['', [Validators.required, ]],
+  //   }, {
+  //     validators: [matchPasswordsValidator('password', 'rePassword')]
+  //   }),
+  // })
 
-  get passGroup() {
-    return this.form.get('passGroup');
-  }
+  // get passGroup() {
+  //   return this.form.get('passGroup');
+  // }
 
-  register(): void {
-    if (this.form.invalid) {
-      return;
-    }
+  // register(): void {
+  //   if (this.form.invalid) {
+  //     return;
+  //   }
 
-    const {username, email, tel, passGroup: {password, rePassword} = {}} = this.form.value;
-    this.userService.register(username!, email!, tel!, password!, rePassword!).subscribe(()=>{
-      this.router.navigate(['/themes'])
-    })
+  //   const {username, email, tel, passGroup: {password, rePassword} = {}} = this.form.value;
+  //   this.userService.register(username!, email!, tel!, password!, rePassword!).subscribe(()=>{
+  //     this.router.navigate(['/themes'])
+  //   })
 
-    console.log(this.form.value)
-  }
+  //   console.log(this.form.value)
+  // }
 }

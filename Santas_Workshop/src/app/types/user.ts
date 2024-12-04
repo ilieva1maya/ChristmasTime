@@ -14,9 +14,10 @@
 // }
 
 export interface UserForAuth {
-    username: string;
+    nickName: string;
     email: string;
-    tel: string;
+    beardLength: string;
+    image: string;
     password: string;
     id: string;
 }
