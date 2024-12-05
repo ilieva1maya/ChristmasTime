@@ -1,0 +1,25 @@
+/* General notification styling */
+.notification {
+    font-family: Arial, sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Specific styles for error messages */
+.error-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Light red border */
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
+    text-align: left;
+}
+
+/* Optional: For better spacing and alignment */
+.error-message::before {
+    content: "⚠️ "; /* Add a warning icon before the message */
+}

@@ -18,6 +18,15 @@
                     </span>
                 </div>
 
+                <ng-container *ngIf="form.get('nickName')?.touched">
+                    <p class="error" *ngIf="form.get('nickName')?.errors?.['required']">
+                        Nickname is required!
+                    </p>
+                    <p class="error" *ngIf="form.get('nickName')?.errors?.['minlength']">
+                        Nickname must be at least 5 characters!
+                    </p>
+                </ng-container>
+
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="email" placeholder="Email" formControlName="email">
                     <span class="focus-input100"></span>
@@ -29,6 +38,15 @@
                     </span>
                 </div>
 
+                <ng-container *ngIf="form.get('email')?.touched">
+                    <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+                        Email is required!
+                    </p>
+                    <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator']">
+                        Email is not valid!
+                    </p>
+                </ng-container>
+
                 <div class="wrap-input100 validate-input" data-validate="Image is required: http://">
                     <input class="input100" type="text" name="image" placeholder="Image" formControlName="image">
                     <span class="focus-input100"></span>
@@ -39,6 +57,15 @@
                         </svg>
                     </span>
                 </div>
+
+                <ng-container *ngIf="form.get('image')?.touched">
+                    <p class="error" *ngIf="form.get('image')?.errors?.['required']">
+                        Image is required!
+                    </p>
+                    <p class="error" *ngIf="form.get('image')?.errors?.['imageValidator']">
+                        Image must starts with http://
+                    </p>
+                </ng-container>
 
                 <ng-container formGroupName="passGroup">
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
@@ -64,6 +91,14 @@
                             </svg>
                         </span>
                     </div>
+
+                    <ng-container *ngIf="passGroup?.get('rePassword')?.touched">
+                        <p class="error" *ngIf="passGroup?.errors?.['matchPasswordsValidator'] ||
+                        passGroup?.get('rePassword')?.errors?.['required']">
+                            Repeat Password does not match Password!
+                        </p>
+                    </ng-container>
+
                 </ng-container>
 
                 <div class="container-register100-form-btn">
