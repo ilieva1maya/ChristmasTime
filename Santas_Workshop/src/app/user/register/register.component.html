@@ -1,8 +1,8 @@
 <div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form" [formGroup]="form" (ngSubmit)="register()">
-                <span class="login100-form-title">
+    <div class="container-register100">
+        <div class="wrap-register100">
+            <form class="register100-form validate-form" [formGroup]="form" (ngSubmit)="register()">
+                <span class="register100-form-title">
                     Join Our Team
                 </span>
 
@@ -66,8 +66,8 @@
                     </div>
                 </ng-container>
 
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" [disabled]="form.invalid"
+                <div class="container-register100-form-btn">
+                    <button class="register100-form-btn" [disabled]="form.invalid"
                         [style]="{backgroundColor: form.invalid ? 'grey' : 'rgb(111, 77, 77)'}">
                         Register
                     </button>
@@ -83,7 +83,7 @@
                 </div>
             </form>
 
-            <div class="login100-pic js-tilt" data-tilt>
+            <div class="register100-pic js-tilt" data-tilt>
                 <img src="../../../assets/images/dwarfs.jpg" alt="IMG">
             </div>
         </div>
