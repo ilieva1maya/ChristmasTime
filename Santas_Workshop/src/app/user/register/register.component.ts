@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { emailValidator } from 'src/app/shared/utils/email-validator';
+import { EMAIL_DOMAINS } from 'src/app/constants';
+import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-validator';
 
 @Component({
   selector: 'app-register',
@@ -9,21 +14,39 @@ import { FormBuilder } from '@angular/forms';
 
 export class RegisterComponent {
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   form = this.fb.group({
-    nickName: [''],
-    email: [''],
-    image: [''],
+    nickName: ['', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
+    image: ['', [Validators.required]],
+    // password: ['', [Validators.required, matchPasswordsValidator('password', 'rePassword')]],
+    // rePassword: ['', [Validators.required, matchPasswordsValidator('password', 'rePassword')]],
     passGroup: this.fb.group({
-      password: [''],
-      rePassword: [''],
-    })
+      password: ['', [Validators.required, ]],
+      rePassword: ['', [Validators.required, ]],
+    }, {
+      validators: [matchPasswordsValidator('password', 'rePassword')]
+    }),
   })
 
-  register(): void { 
+  get passGroup() {
+    return this.form.get('passGroup');
+  }
 
-    console.log(this.form.value)
+  register(): void {
+
+    if (this.form.invalid) {
+      console.log('Form invalid')
+      return;
+    }
+
+    console.log(`Form valid: ${this.form.value}`)
+
+    // const {nickName, email, image, passGroup: {password, rePassword} = {}} = this.form.value;    
+    // this.userService.register(nickName!, email!, image!, password!, rePassword!).subscribe(()=>{
+    //   this.router.navigate(['/warehouse'])
+    // })
   }
 }
 

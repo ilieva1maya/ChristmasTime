@@ -8,7 +8,7 @@ export function matchPasswordsValidator(
         const passFormControl = control.get(passwordControlName);
         const rePassFormControl = control.get(rePasswordControlName);
 
-        const areMatching = passFormControl?.value == rePassFormControl?.value
+        const areMatching = passFormControl?.value === rePassFormControl?.value
         return areMatching ? null : {matchPasswordsValidator: true};
     }
 }

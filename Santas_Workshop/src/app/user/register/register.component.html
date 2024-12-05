@@ -1,6 +1,6 @@
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-login100">            
+        <div class="wrap-login100">
             <form class="login100-form validate-form" [formGroup]="form" (ngSubmit)="register()">
                 <span class="login100-form-title">
                     Join Our Team
@@ -40,29 +40,31 @@
                     </span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="password" placeholder="Password"
-                        formControlName="password">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path
-                                d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
-                        </svg>
-                    </span>
-                </div>
+                <ng-container formGroupName="passGroup">
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password"
+                            formControlName="password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
+                            </svg>
+                        </span>
+                    </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="rePassword" name="rePassword" placeholder="Retype Password"
-                        formControlName="rePassword">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path
-                                d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
-                        </svg>
-                    </span>
-                </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="rePassword" placeholder="Retype Password"
+                            formControlName="rePassword">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
+                            </svg>
+                        </span>
+                    </div>
+                </ng-container>
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
