@@ -67,7 +67,8 @@
                 </ng-container>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
+                    <button class="login100-form-btn" [disabled]="form.invalid"
+                        [style]="{backgroundColor: form.invalid ? 'grey' : 'rgb(111, 77, 77)'}">
                         Register
                     </button>
                 </div>

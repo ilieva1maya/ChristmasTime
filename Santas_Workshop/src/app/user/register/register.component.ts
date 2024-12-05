@@ -41,7 +41,7 @@ export class RegisterComponent {
       return;
     }
 
-    console.log(`Form valid: ${this.form.value}`)
+    console.log('Form valid')
 
     // const {nickName, email, image, passGroup: {password, rePassword} = {}} = this.form.value;    
     // this.userService.register(nickName!, email!, image!, password!, rePassword!).subscribe(()=>{

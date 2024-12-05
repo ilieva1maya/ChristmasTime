@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { EMAIL_DOMAINS } from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,21 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
- constructor(private userService: UserService, private router: Router){}
+  domains = EMAIL_DOMAINS;
 
- login(form: NgForm) {
+  constructor(private userService: UserService, private router: Router) {}
 
-  this.userService.login();
-  this.router.navigate(['/home'])
-  // if (form.invalid) {
-  //   return;
-  // }
 
-  // const {email, password} = form.value;
+  login(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
 
-  // this.userService.login(email, password).subscribe(()=>{
-  //   this.router.navigate(['/home']);
-  // });    
-}
+    const {email, password} = form.value;
+    console.log(`Email: ${email} // Password: ${password}`)
+
+    // this.userService.login(email, password).subscribe(()=>{
+    //   this.router.navigate(['/warehouse']);
+    // });    
+  }
 }
