@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { UserForAuth } from '../types/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,10 @@ export class UserService implements OnDestroy{
   //   .post<UserForAuth>('/api/login', { email, password })
   //   .pipe(tap((user) =>this.user$$.next(user)));
   // }
+  login(){
+    console.log("User is logged");
+    
+  }
 
   register(username: string, email: string, tel: string,  password: string, rePassword: string){
     return this.http
