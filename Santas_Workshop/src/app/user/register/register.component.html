@@ -47,7 +47,7 @@
                     </p>
                 </ng-container>
 
-                <div class="wrap-input100 validate-input" data-validate="Image is required: http://">
+                <div class="wrap-input100 validate-input" data-validate="Image is required">
                     <input class="input100" type="text" name="image" placeholder="Image" formControlName="image">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
@@ -64,6 +64,23 @@
                     </p>
                     <p class="error" *ngIf="form.get('image')?.errors?.['imageValidator']">
                         Image must starts with http://
+                    </p>
+                </ng-container>
+
+                <div class="wrap-input100 validate-input" data-validate="Height is required">
+                    <input class="input100" type="number" name="height" placeholder="Height" formControlName="height">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M177.9 494.1c-18.7 18.7-49.1 18.7-67.9 0L17.9 401.9c-18.7-18.7-18.7-49.1 0-67.9l50.7-50.7 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 50.7-50.7c18.7-18.7 49.1-18.7 67.9 0l92.1 92.1c18.7 18.7 18.7 49.1 0 67.9L177.9 494.1z" />
+                        </svg>
+                    </span>
+                </div>
+
+                <ng-container *ngIf="form.get('height')?.touched">
+                    <p class="error" *ngIf="form.get('height')?.errors?.['required']">
+                        Height is required!
                     </p>
                 </ng-container>
 

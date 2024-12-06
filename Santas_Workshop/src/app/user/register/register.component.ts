@@ -21,7 +21,8 @@ export class RegisterComponent {
     nickName: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
     // image: ['', [Validators.required, imageValidator(VALID_URLS)]],  
-    image: ['', [Validators.required]],   
+    image: ['', [Validators.required]],
+    height: ['', [Validators.required]], 
     passGroup: this.fb.group({
       password: ['', [Validators.required, ]],
       rePassword: ['', [Validators.required, ]],
@@ -43,10 +44,10 @@ export class RegisterComponent {
 
     console.log('Form valid')
 
-    // const {nickName, email, image, passGroup: {password, rePassword} = {}} = this.form.value;    
-    // this.userService.register(nickName!, email!, image!, password!, rePassword!).subscribe(()=>{
-    //   this.router.navigate(['/warehouse'])
-    // })
+    const {nickName, email, image, height, passGroup: {password, rePassword} = {}} = this.form.value;    
+    this.userService.register(nickName!, email!, image!, Number(height!), password!, rePassword!).subscribe(()=>{
+      this.router.navigate(['/warehouse'])
+    })
   }
 }
 

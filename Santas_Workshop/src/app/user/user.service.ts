@@ -37,9 +37,15 @@ export class UserService implements OnDestroy{
     return { email: "Email", password: "Pass" };
   }
 
-  register(username: string, email: string, tel: string,  password: string, rePassword: string){
+  register(nickName:string, email:string, image:string, height:number,  password: string, rePassword: string){
     return this.http
-    .post<UserForAuth>('/api/register', { username, email, tel, password, rePassword })
+    .post<UserForAuth>('/api/register', {
+      nickName,
+      email,
+      image,
+      height,
+      password,
+      rePassword })
     .pipe(tap((user) =>this.user$$.next(user)));
   }
 
@@ -64,6 +70,17 @@ export class UserService implements OnDestroy{
   //   })
   //   .pipe(tap((user) => this.user$$.next(user)));
   // }
+
+  updateProfile(nickName:string, email:string, image:string, height:number) {
+    return this.http
+    .put<UserForAuth>('/api/users/profile', {
+      nickName,
+      email,
+      image,
+      height
+    })
+    .pipe(tap((user) => this.user$$.next(user)));
+  }
     
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe()

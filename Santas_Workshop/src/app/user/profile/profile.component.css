@@ -1,0 +1,141 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;    
+  }
+
+/* Profile container */
+.profile-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Profile card styling */
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Profile image */
+.profile-header {
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 200px;
+    border: 1px solid #2c3e50;
+}
+
+/* Profile details */
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.profile-height {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Contact info section */
+.profile-contact {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.profile-contact p {
+    margin: 5px 0;
+}
+
+/* Button group styling */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.green-button, .red-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.green-button {
+    background-color: green;
+    color: white;
+}
+
+.green-button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+
+.red-button:hover {
+    background-color: darkred;
+}
+
+.green-button:hover {
+    background-color: darkgreen;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .profile-card {
+        padding: 15px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 1.6rem;
+    }
+
+    .profile-height {
+        font-size: 1rem;
+    }
+}

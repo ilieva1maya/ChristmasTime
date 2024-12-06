@@ -17,12 +17,14 @@ export interface UserForAuth {
     nickName: string;
     email: string;
     image: string;
+    height: number,
     password: string;
     id: string;
 }
 
-// export interface ProfileDetails {
-//     username: string;    
-//     email: string;
-//     tel: string;
-// }
+export interface ProfileDetails {
+    nickName: string;
+    email: string;
+    image: string;
+    height: number,
+}
