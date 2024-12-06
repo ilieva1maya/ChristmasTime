@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CreatePresentComponent } from './create-present/create-present.component';
 import { PresentsRoutingModule } from './presents-routing.module';
 import { WarehouseComponent } from './warehouse/warehouse.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
   ],
   imports: [
     CommonModule,
-    PresentsRoutingModule
+    PresentsRoutingModule,
+    SharedModule,
+    FormsModule,
   ]
 })
 export class PresentsModule { }
