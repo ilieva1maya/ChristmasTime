@@ -6,7 +6,7 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnDestroy{
+export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
   private user$ = this.user$$.asObservable();
 
@@ -20,68 +20,59 @@ export class UserService implements OnDestroy{
   }
 
   constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) =>{
+    this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
-  // login(email: string, password: string) {
-  //   return this.http
-  //   .post<UserForAuth>('/api/login', { email, password })
-  //   .pipe(tap((user) =>this.user$$.next(user)));
-  // }
-  login(email: string, password: string){
-
-    console.log("User is logged in");
-    
-    return { email: "Email", password: "Pass" };
-  }
-
-  register(nickName:string, email:string, image:string, height:number,  password: string, rePassword: string){
+  login(email: string, password: string) {
     return this.http
-    .post<UserForAuth>('/api/register', {
-      nickName,
-      email,
-      image,
-      height,
-      password,
-      rePassword })
-    .pipe(tap((user) =>this.user$$.next(user)));
+      .post<UserForAuth>('/api/login', { email, password })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
+  // login(email: string, password: string){
 
-  // logout() {
-  //   return this.http
-  //   .post('/api/logout', { })
-  //   .pipe(tap(() =>this.user$$.next(undefined)));
+  //   console.log("User is logged in");
+
+  //   return { email: "Email", password: "Pass" };
   // }
 
-  // getProfile() {
-  //   return this.http
-  //   .get<UserForAuth>('/api/users/profile')
-  //   .pipe(tap((user) => this.user$$.next(user)));
-  // }
-
-  // updateProfile(username: string, email: string, tel?:string) {
-  //   return this.http
-  //   .put<UserForAuth>('/api/users/profile', {
-  //     username,
-  //     email,
-  //     tel
-  //   })
-  //   .pipe(tap((user) => this.user$$.next(user)));
-  // }
-
-  updateProfile(nickName:string, email:string, image:string, height:number) {
+  register(nickName: string, email: string, image: string, height: number, password: string, rePassword: string) {
     return this.http
-    .put<UserForAuth>('/api/users/profile', {
-      nickName,
-      email,
-      image,
-      height
-    })
-    .pipe(tap((user) => this.user$$.next(user)));
+      .post<UserForAuth>('/api/register', {
+        nickName,
+        email,
+        image,
+        height,
+        password,
+        rePassword
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
-    
+
+  logout() {
+    return this.http
+      .post('/api/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
+  }
+
+  getProfile() {
+    return this.http
+      .get<UserForAuth>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  updateProfile(nickName: string, email: string, image: string, height: number) {
+    return this.http
+      .put<UserForAuth>('/api/users/profile', {
+        nickName,
+        email,
+        image,
+        height
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe()
   }

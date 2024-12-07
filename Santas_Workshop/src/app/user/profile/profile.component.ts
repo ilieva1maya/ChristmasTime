@@ -61,6 +61,7 @@ import { ProfileDetails } from 'src/app/types/user';
     const {nickName, email, image, height} = this.profileDetails;
 
     console.log(nickName, email, image, height)
+    this.onToggle()
 
     // this.userService.updateProfile(nickName, email, image, height).subscribe(()=>{
     //   this.onToggle();

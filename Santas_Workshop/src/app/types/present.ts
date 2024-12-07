@@ -3,5 +3,5 @@ export interface Present {
     itemDescription: string;
     itemImage: string;
     itemCategory: string;
-    id: string;
+    _id: string;
 }
