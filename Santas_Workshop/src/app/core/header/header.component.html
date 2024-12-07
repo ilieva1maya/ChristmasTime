@@ -1,19 +1,19 @@
 <header class="top-header">
-    <nav class="navbar header-nav navbar-expand-lg">        
+    <nav class="navbar header-nav navbar-expand-lg">
         <div class="container">
-            <!-- <a class="navbar-brand" href="index.html"><img src="../../../../../Resources/images/logo.png" alt="image"></a> -->
             <div>
                 <img src="../../../assets/images/logo.png" alt="logo">
             </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">               
+            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                 <ul class="navbar-nav">
                     <li><a class="nav-link active" routerLink="/home">HO-HO-HOme</a></li>
                     <li><a class="nav-link" routerLink="/warehouse">Warehouse</a></li>
                     <li><a class="nav-link" routerLink="/create-present">Create Present</a></li>
-                    <li><a class="nav-link" routerLink="/auth/profile">My Profile</a></li>
-                    <li><a class="nav-link" routerLink="/auth/login">Login</a></li>
-                    <li><a class="nav-link" routerLink="/auth/register">Register</a></li>
-                    <li (click)="logout()"><a class="nav-link" routerLink="/logout">Logout</a></li>
+                    <li *ngIf="isLoggedIn"><a class="nav-link" routerLink="/auth/profile">{{nickName}}'s Profile</a>
+                    </li>
+                    <li *ngIf="isLoggedIn" (click)="logout()"><a class="nav-link" routerLink="/logout">Logout</a></li>
+                    <li *ngIf="!isLoggedIn"><a class="nav-link" routerLink="/auth/login">Login</a></li>
+                    <li *ngIf="!isLoggedIn"><a class="nav-link" routerLink="/auth/register">Register</a></li>
                 </ul>
             </div>
         </div>

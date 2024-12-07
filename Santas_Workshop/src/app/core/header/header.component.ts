@@ -14,7 +14,7 @@ export class HeaderComponent {
     return this.userService.isLogged;
   };
 
-  get username(): string {
+  get nickName(): string {
     return this.userService.user?.nickName || '';
   }
 
