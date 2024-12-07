@@ -8,9 +8,10 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './warehouse.component.html',
   styleUrls: ['./warehouse.component.css']
 })
-// export class WarehouseComponent implements OnInit {
-  export class WarehouseComponent {
+export class WarehouseComponent implements OnInit {
   presents: Present[] | null = [];
+
+  arePresents = false;
   // isLoading: boolean = true;
 
   constructor(private api: ApiService, private userService: UserService) { }
@@ -23,11 +24,19 @@ import { UserService } from 'src/app/user/user.service';
     return this.userService.user?.id || '';
   };
 
-  // ngOnInit(): void {
-  //   this.api.getPresents().subscribe((presents) => {      
-  //     this.presents = presents;
+  ngOnInit(): void {
+    this.api.getPresents().subscribe((presents) => {      
 
-  //     // this.isLoading = false;
-  //   })
-  // }
+      if (presents) {
+        this.arePresents = true;
+        this.presents = presents;
+      }
+      
+          
+
+      // this.isLoading = false;
+    })
+  }
 }
+
+

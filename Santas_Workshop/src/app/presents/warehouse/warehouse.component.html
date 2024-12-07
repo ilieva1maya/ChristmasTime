@@ -3,7 +3,7 @@
         <h3>Welcome to Santa's Warehouse </h3>
     </div>
     
-    <div class="presents-list">
+    <div *ngIf="arePresents" class="presents-list">
         <div class="present-item">
             <div class="present-image">
                 <img src="https://www.decor-by-glassor.com/wareImages/23/2/023292_or-.jpg" alt="Present Image" />
@@ -44,9 +44,9 @@
     
 <!--  -->
 
-    <!-- <div class="no-presents">
+    <div *ngIf="!arePresents" class="no-presents">
         <h3>Warehouse is empty! </h3>
         <h3>Well Done! All the presents are on their way for Christmas!</h3>
         <img src="../../../assets/images/SantaOnSlide.jpg" alt="MagicChristmas" />
-    </div> -->
+    </div>
 </div>
