@@ -39,7 +39,7 @@ export class UserService implements OnDestroy {
 
   register(nickName: string, email: string, image: string, height: number, password: string, rePassword: string) {
     return this.http
-      .post<UserForAuth>('/api/register', {
+      .post<UserForAuth>('/users', {
         nickName,
         email,
         image,

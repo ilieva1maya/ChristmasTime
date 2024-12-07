@@ -8,7 +8,7 @@
                 <ul class="navbar-nav">
                     <li><a class="nav-link active" routerLink="/home">HO-HO-HOme</a></li>
                     <li><a class="nav-link" routerLink="/warehouse">Warehouse</a></li>
-                    <li><a class="nav-link" routerLink="/create-present">Create Present</a></li>
+                    <li *ngIf="isLoggedIn"><a class="nav-link" routerLink="/create-present">Create Present</a></li>
                     <li *ngIf="isLoggedIn"><a class="nav-link" routerLink="/auth/profile">{{nickName}}'s Profile</a>
                     </li>
                     <li *ngIf="isLoggedIn" (click)="logout()"><a class="nav-link" routerLink="/logout">Logout</a></li>
