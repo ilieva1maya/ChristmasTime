@@ -27,7 +27,7 @@ export class UserService implements OnDestroy {
 
   login(email: string, password: string) {
     return this.http
-      .post<UserForAuth>('/api/login', { email, password })
+      .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
   // login(email: string, password: string){
@@ -39,7 +39,7 @@ export class UserService implements OnDestroy {
 
   register(nickName: string, email: string, image: string, height: number, password: string, rePassword: string) {
     return this.http
-      .post<UserForAuth>('/users', {
+      .post<UserForAuth>('http://localhost:3030/users/register', {
         nickName,
         email,
         image,
@@ -52,7 +52,7 @@ export class UserService implements OnDestroy {
 
   logout() {
     return this.http
-      .post('/api/logout', {})
+      .post('http://localhost:3030/users/logout', {})
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 
