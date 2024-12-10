@@ -35,20 +35,6 @@ export class UserService implements OnDestroy {
   // }
 
   // SAVE THE TOKEN IN LOCAL STORAGE
-  // login(email: string, password: string) {
-  //   return this.http
-  //     .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
-  //     .pipe(
-  //       tap((user) => {
-  //         // Assuming the accessToken is part of the response object
-  //         if (user && user.accessToken) {
-  //           localStorage.setItem('accessToken', user.accessToken);  // Save accessToken to localStorage
-  //         }
-  //         this.user$$.next(user);  // Update the user BehaviorSubject with the user data
-  //       })
-  //     );
-  // }
-
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
@@ -56,12 +42,27 @@ export class UserService implements OnDestroy {
         tap((user) => {
           // Assuming the accessToken is part of the response object
           if (user && user.accessToken) {
-            setAccessTokenInCookie(user.accessToken);  // Save accessToken in a cookie
+            localStorage.setItem('accessToken', user.accessToken);  // Save accessToken to localStorage
           }
           this.user$$.next(user);  // Update the user BehaviorSubject with the user data
         })
       );
   }
+
+  // SAVE THE TOKEN IN COOKIE
+  // login(email: string, password: string) {
+  //   return this.http
+  //     .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
+  //     .pipe(
+  //       tap((user) => {
+  //         // Assuming the accessToken is part of the response object
+  //         if (user && user.accessToken) {
+  //           setAccessTokenInCookie(user.accessToken);  // Save accessToken in a cookie
+  //         }
+  //         this.user$$.next(user);  // Update the user BehaviorSubject with the user data
+  //       })
+  //     );
+  // }
   
   
 
@@ -78,24 +79,26 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  // logout() {
-  //   return this.http
-  //     .post('http://localhost:3030/users/logout', {})
-  //     .pipe(tap(() => this.user$$.next(undefined)));
-  // }
+  // CLEAR LOCAL STORAGE
+  logout() {
+   localStorage.removeItem('accessToken');
+    return this.http
+      .post('http://localhost:3030/users/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
+  }
 
 
   // DELETE THE COOKIE
-  logout() {    
-    deleteAccessTokenCookie(); 
-    return this.http
-      .post('http://localhost:3030/users/logout', {})
-      .pipe(
-        tap(() => {
-          this.user$$.next(undefined);  // Clear user data
-        })
-      );
-  }
+  // logout() {    
+  //   deleteAccessTokenCookie(); 
+  //   return this.http
+  //     .post('http://localhost:3030/users/logout', {})
+  //     .pipe(
+  //       tap(() => {
+  //         this.user$$.next(undefined);  // Clear user data
+  //       })
+  //     );
+  // }
   
    
 
