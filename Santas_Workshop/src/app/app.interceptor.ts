@@ -9,14 +9,14 @@ const { apiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-    API = '/api';
+    API = '/users';
 
     constructor(private errorService: ErrorService, private router: Router){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.url.startsWith(this.API)) {
             req = req.clone({
-                url: req.url.replace(this.API, apiUrl),
+                // url: req.url.replace(this.API, apiUrl),
                 withCredentials: true,
             });
         }

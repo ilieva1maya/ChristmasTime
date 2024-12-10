@@ -1,15 +1,13 @@
 <div class="container">
-    <div class="intro">
-        <h3>Welcome to Santa's Warehouse </h3>
-    </div>
-    
-    <div *ngIf="arePresents" class="presents-list">
+
+    <!-- <div *ngIf="arePresents" class="presents-list"> -->
+    <div class="presents-list">
         <div class="present-item">
             <div class="present-image">
                 <img src="https://www.decor-by-glassor.com/wareImages/23/2/023292_or-.jpg" alt="Present Image" />
             </div>
             <div class="present-info">
-                <h3>Item: Christmas ball</h3>                
+                <h3>Item: Christmas ball</h3>
                 <div class="present-details">
                     <p>Category: Decoration</p>
                 </div>
@@ -30,7 +28,8 @@
         </div>
         <div class="present-item">
             <div class="present-image">
-                <img src="https://www.bybenson.com/cdn/shop/products/christmas-sweater-102993_1000x1000.jpg?v=1708297893" alt="Present Image" />
+                <img src="https://www.bybenson.com/cdn/shop/products/christmas-sweater-102993_1000x1000.jpg?v=1708297893"
+                    alt="Present Image" />
             </div>
             <div class="present-info">
                 <h3>Item: Christmas sweater</h3>
@@ -41,12 +40,11 @@
             </div>
         </div>
     </div>
-    
-<!--  -->
 
-    <div *ngIf="!arePresents" class="no-presents">
-        <h3>Warehouse is empty! </h3>
-        <h3>Well Done! All the presents are on their way for Christmas!</h3>
+
+    <!-- <div *ngIf="!arePresents" class="no-presents">
+        <h3>Warehouse is empty! Well Done!</h3>
+        <h3>All the presents are on their way for Christmas!</h3>
         <img src="../../../assets/images/SantaOnSlide.jpg" alt="MagicChristmas" />
-    </div>
+    </div> -->
 </div>

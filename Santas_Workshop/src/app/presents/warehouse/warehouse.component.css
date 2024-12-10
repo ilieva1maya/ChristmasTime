@@ -71,15 +71,14 @@
     color: #555;
 }
 
-/* No Trees Section */
 .no-presents {
-    text-align: center;
-    margin-top: 50px;
+    text-align: center;    
 }
 
 .no-presents h3 {
     font-size: 1.5rem;
     color: #333;
+    margin-bottom: 15px;
 }
 
 .no-presents .add-present {
