@@ -35,19 +35,45 @@ export class UserService implements OnDestroy {
   // }
 
   // SAVE THE TOKEN IN LOCAL STORAGE
+  // login(email: string, password: string) {
+  //   return this.http
+  //     .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
+  //     .pipe(
+  //       tap((user) => {
+  //         // Assuming the accessToken is part of the response object
+  //         if (user && user.accessToken) {
+  //           localStorage.setItem('accessToken', user.accessToken);  // Save accessToken to localStorage
+  //         }
+  //         this.user$$.next(user);  // Update the user BehaviorSubject with the user data
+  //       })
+  //     );
+  // }
+
+  // SAVE THE TOKEN IN LOCAL STORAGE / GET HEADERS OF THE RESPONSE
+
+
   login(email: string, password: string) {
     return this.http
-      .post<UserForAuth>('http://localhost:3030/users/login', { email, password })
+      .post<UserForAuth>('http://localhost:3030/users/login', { email, password }, { observe: 'response' })  // Observe the full response
       .pipe(
-        tap((user) => {
-          // Assuming the accessToken is part of the response object
+        tap((response) => {
+          // Access the headers from the response
+          const headers = response.headers;
+          console.log('Response:', response.body?.accessToken);
+
+          // If access token is returned in response body, store it in localStorage
+          const user = response.body;  // Access body
           if (user && user.accessToken) {
             localStorage.setItem('accessToken', user.accessToken);  // Save accessToken to localStorage
           }
-          this.user$$.next(user);  // Update the user BehaviorSubject with the user data
+          
+          // Update the user BehaviorSubject with the user data
+          this.user$$.next(user!);
         })
       );
   }
+
+
 
   // SAVE THE TOKEN IN COOKIE
   // login(email: string, password: string) {
