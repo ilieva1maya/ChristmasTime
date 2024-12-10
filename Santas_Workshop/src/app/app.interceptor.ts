@@ -2,25 +2,30 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-// Interceptor with Injectable decorator
+
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('Intercepted Request:', req);
-    // Optionally modify the request (e.g., adding headers)
-    // const clonedRequest = req.clone({      
-    //   // withCredentials: true
-    //   headers: req.headers.set('X-Authorization', 'your-token-here')
-    // });
-    // console.log('Cloned Request:', clonedRequest);
-    // return next.handle(clonedRequest);
-    return next.handle(req)
+    const token = localStorage.getItem('accessToken');
+    console.log(token)
+
+    if (token) {
+      const clonedRequest = req.clone({
+        headers: req.headers.set('X-Authorization', token)  // Add token to the X-Authorization header
+      });
+
+      console.log('Cloned Request with Token:', clonedRequest);
+      return next.handle(clonedRequest);  // Forward the cloned request with the added token
+    }
+
+    // If no token is found, continue with the original request
+    console.log('No token')
+    return next.handle(req);
   }
 }
 
-// Provide the Interceptor in the AppModule
 export const appInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: AppInterceptor,
-  multi: true, // Ensures that this interceptor is added to the list of interceptors
+  multi: true, 
 };
