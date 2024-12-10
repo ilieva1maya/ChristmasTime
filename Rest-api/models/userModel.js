@@ -5,46 +5,41 @@ const saltRounds = Number(process.env.SALTROUNDS) || 5;
 const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
-    tel: {
+    image: {
         type: String,
+        required: true,
     },
     email: {
         type: String,
         required: true,
         unique: true,
     },
-    username: {
+    nickName: {
         type: String,
         required: true,
         unique: true,
-        minlength: [5, 'Username should be at least 5 characters'],
-        validate: {
-            validator: function (v) {
-                return /[a-zA-Z0-9]+/g.test(v);
-            },
-            message: props => `${props.value} must contains only latin letters and digits!`
-        },
+        minlength: [5, 'Nickname should be at least 5 characters'],
+    },
+    height: {
+        type: Number,
+        required: true,
     },
     password: {
         type: String,
         required: true,
         minlength: [5, 'Password should be at least 5 characters'],
-        validate: {
-            validator: function (v) {
-                return /[a-zA-Z0-9]+/g.test(v);
-            },
-            message: props => `${props.value} must contains only latin letters and digits!`
-        },
     },
-    themes: [{
-        type: ObjectId,
-        ref: "Theme"
-    }],
-    posts: [{
-        type: ObjectId,
-        ref: "Post"
-    }]
-}, { timestamps: { createdAt: 'created_at' } });
+    // themes: [{
+    //     type: ObjectId,
+    //     ref: "Theme"
+    // }],
+    // posts: [{
+    //     type: ObjectId,
+    //     ref: "Post"
+    // }]
+}, 
+// { timestamps: { createdAt: 'created_at' } }
+);
 
 userSchema.methods = {
     matchPassword: function (password) {
