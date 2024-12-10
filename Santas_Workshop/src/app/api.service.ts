@@ -15,9 +15,9 @@ export class ApiService {
     // const api = environment.apiUrl;
     // или
     const { apiUrl } = environment;
-    console.log(`api.service/getPresents()/apiUrl:${apiUrl}`)
+    // console.log(`api.service/getPresents()/apiUrl:${apiUrl}`)
 
-    // return this.http.get<Theme[]>(`${apiUrl}/themes`);
+    // return this.http.get<Present[]>(`${apiUrl}/warehouse`);
     return EMPTY
   }
 

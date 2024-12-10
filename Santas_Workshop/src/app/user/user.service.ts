@@ -86,11 +86,8 @@ export class UserService implements OnDestroy {
 
 
   // DELETE THE COOKIE
-  logout() {
-    // Delete the accessToken cookie
-    deleteAccessTokenCookie();
-  
-    // Make the logout API request
+  logout() {    
+    deleteAccessTokenCookie(); 
     return this.http
       .post('http://localhost:3030/users/logout', {})
       .pipe(
@@ -100,9 +97,7 @@ export class UserService implements OnDestroy {
       );
   }
   
-  // Helper method to delete the accessToken cookie
-
-  
+   
 
   // getProfile() {
   //   return this.http

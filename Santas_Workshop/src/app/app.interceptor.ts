@@ -1,41 +1,24 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable, Provider } from "@angular/core";
-import { catchError, Observable } from "rxjs";
-import { environment } from "src/environments/environment.development";
-import { ErrorService } from "./core/error/error.service";
-import { Router } from "@angular/router";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
-const { apiUrl } = environment;
-
+// Interceptor with Injectable decorator
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-    API = '/users';
-
-    constructor(private errorService: ErrorService, private router: Router){}
-
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (req.url.startsWith(this.API)) {
-            req = req.clone({
-                // url: req.url.replace(this.API, apiUrl),
-                withCredentials: true,
-            });
-        }
-        return next.handle(req).pipe(
-            catchError((err) => {
-                if (err.status === 401) {
-                    this.router.navigate(['/auth/login'])
-                } else {
-                    this.errorService.setError(err)
-                    this.router.navigate(['/error'])
-                }                
-                return [err];
-            })
-        );
-    }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Intercepted Request:', req);
+    // Optionally modify the request (e.g., adding headers)
+    // const clonedRequest = req.clone({      
+    //   headers: req.headers.set('X-Authorization', 'your-token-here')
+    // });
+    // return next.handle(clonedRequest);
+    return next.handle(req)
+  }
 }
 
-export const appInterceptorProvider: Provider = {
-    useClass: AppInterceptor,
-    multi: true,
-    provide: HTTP_INTERCEPTORS,
-}
+// Provide the Interceptor in the AppModule
+export const appInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AppInterceptor,
+  multi: true, // Ensures that this interceptor is added to the list of interceptors
+};
