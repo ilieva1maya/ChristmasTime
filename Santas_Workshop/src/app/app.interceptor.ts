@@ -1,31 +1,40 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable } from "rxjs";
+import { ErrorService } from "./core/error/error.service";
+import { Router } from "@angular/router";
 
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
+
+  constructor(private errorService: ErrorService, private router: Router) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('accessToken');
-    console.log(token)
 
     if (token) {
-      const clonedRequest = req.clone({
-        headers: req.headers.set('X-Authorization', token)  // Add token to the X-Authorization header
+      req = req.clone({
+        headers: req.headers.set('X-Authorization', token)
       });
-
-      console.log('Cloned Request with Token:', clonedRequest);
-      return next.handle(clonedRequest);  // Forward the cloned request with the added token
     }
 
-    // If no token is found, continue with the original request
-    console.log('No token')
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((err) => {
+        if (err.status === 401) {
+          this.router.navigate(['/auth/login'])
+        } else {
+          this.errorService.setError(err)
+          this.router.navigate(['/error'])
+        }
+        return [err];
+      })
+    );
   }
 }
 
 export const appInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: AppInterceptor,
-  multi: true, 
+  multi: true,
 };
