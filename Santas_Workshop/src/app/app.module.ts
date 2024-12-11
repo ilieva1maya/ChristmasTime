@@ -9,6 +9,7 @@ import { PresentsModule } from './presents/presents.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 
 
@@ -16,7 +17,7 @@ import { appInterceptorProvider } from './app.interceptor';
   declarations: [
     AppComponent,    
     HomeComponent, 
-    NotFoundComponent, 
+    NotFoundComponent, AuthenticateComponent, 
   ],
   imports: [
     BrowserModule,
