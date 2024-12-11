@@ -2,8 +2,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { UserForAuth } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { setAccessTokenInCookie } from '../shared/utils/setToken';
-import { deleteAccessTokenCookie } from '../shared/utils/deleteToken';
+// import { setAccessTokenInCookie } from '../shared/utils/setToken';
+// import { deleteAccessTokenCookie } from '../shared/utils/deleteToken';
 
 @Injectable({
   providedIn: 'root'
@@ -51,28 +51,23 @@ export class UserService implements OnDestroy {
 
   // SAVE THE TOKEN IN LOCAL STORAGE / GET HEADERS OF THE RESPONSE
 
-
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>('http://localhost:3030/users/login', { email, password }, { observe: 'response' })  // Observe the full response
       .pipe(
         tap((response) => {
-          // Access the headers from the response
-          const headers = response.headers;
-          console.log('Response:', response.body?.accessToken);
+          // console.log('Response:', response.body);
 
-          // If access token is returned in response body, store it in localStorage
-          const user = response.body;  // Access body
+          const user = response.body;
+
           if (user && user.accessToken) {
-            localStorage.setItem('accessToken', user.accessToken);  // Save accessToken to localStorage
+            localStorage.setItem('accessToken', user.accessToken);
           }
-          
-          // Update the user BehaviorSubject with the user data
+
           this.user$$.next(user!);
         })
       );
   }
-
 
 
   // SAVE THE TOKEN IN COOKIE
@@ -88,9 +83,8 @@ export class UserService implements OnDestroy {
   //         this.user$$.next(user);  // Update the user BehaviorSubject with the user data
   //       })
   //     );
-  // }
-  
-  
+  // }  
+
 
   register(nickName: string, email: string, image: string, height: number, password: string, rePassword: string) {
     return this.http
@@ -102,12 +96,23 @@ export class UserService implements OnDestroy {
         password,
         rePassword
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((response) => {
+
+          const user = response;
+
+          if (user && user.accessToken) {
+            localStorage.setItem('accessToken', user.accessToken);
+          }
+
+          this.user$$.next(user!);
+        })
+      );
   }
 
   // CLEAR LOCAL STORAGE
   logout() {
-   localStorage.removeItem('accessToken');
+    localStorage.removeItem('accessToken');
     return this.http
       .post('http://localhost:3030/users/logout', {})
       .pipe(tap(() => this.user$$.next(undefined)));
@@ -125,8 +130,8 @@ export class UserService implements OnDestroy {
   //       })
   //     );
   // }
-  
-   
+
+
 
   // getProfile() {
   //   return this.http
