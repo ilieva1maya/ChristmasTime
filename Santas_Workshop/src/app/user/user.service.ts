@@ -2,8 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { UserForAuth } from '../types/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-// import { setAccessTokenInCookie } from '../shared/utils/setToken';
-// import { deleteAccessTokenCookie } from '../shared/utils/deleteToken';
+
 
 @Injectable({
   providedIn: 'root'
@@ -76,88 +75,103 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  // MOST WORKING
   // updateProfile(nickName: string, email: string, image: string, height: number) {
-  //   return this.http
-  //     .put<UserForAuth>('http://localhost:3030/users/me', {
-  //       nickName,
-  //       email,
-  //       image,
-  //       height
-  //     })
-  //     .pipe(tap((user) => this.user$$.next(user)));
+  //   // Retrieve the token from localStorage
+  //   const token = localStorage.getItem('accessToken');
 
-  // }
+  //   // Create the request payload (what you're sending to the server)
+  //   const requestBody = {
+  //     nickName,
+  //     email,
+  //     image,
+  //     height
+  //   };
 
-  // updateProfile(nickName: string, email: string, image: string, height: number) {
+
+  //   // Log the request payload
+  //   console.log('requesBody:', requestBody);
+  //   console.log('user:', this.user);
+
+  //   // Set headers for the request
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   });
+
+  //   // If token exists, add it to the headers
+  //   if (token) {
+  //     headers = headers.set('X-Authorization', token); // Add the token to the header
+  //   }
+
+  //   // Log headers (showing keys and values)
+  //   console.log('Headers:', headers.keys().map(key => `${key}: ${headers.get(key)}`).join(', '));
+
+  //   // Make the PUT request to update the profile
   //   return this.http
-  //     .put<UserForAuth>('http://localhost:3030/users/me', {
-  //       nickName,
-  //       email,
-  //       image,
-  //       height
-  //     })
+  //     .post<UserForAuth>('http://localhost:3030/users/me', requestBody, { headers })  // Attach the headers to the PUT request
   //     .pipe(
   //       tap((user) => {
-  //         console.log('Updated User:', user); // Log the user object returned from the backend
 
   //         // Update the BehaviorSubject with the new user data
-  //         this.user$$.next(user);
+  //         // this.user$$.next(user);
 
-  //         // Log the current state of the user$$ observable
-  //         this.user$$.subscribe(currentUser => {
-  //           console.log('Current User in user$$:', currentUser); // Log the updated user from the BehaviorSubject
-  //         });
+  //         // Log the current state of the user$$ observable after update
+  //         // this.user$$.subscribe(currentUser => {
+  //         //   console.log('Current User in user$$:', currentUser); // This will reflect the updated user state
+  //         // });
   //       })
   //     );
   // }
 
-
   updateProfile(nickName: string, email: string, image: string, height: number) {
+
     // Retrieve the token from localStorage
     const token = localStorage.getItem('accessToken');
-  
+
+    // Create the request payload (what you're sending to the server)
+    const requestBody = {
+      nickName,
+      email,
+      image,
+      height
+    };
+
     // Set headers for the request
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-  
+
     // If token exists, add it to the headers
     if (token) {
       headers = headers.set('X-Authorization', token); // Add the token to the header
     }
-  
+
     // Log headers (showing keys and values)
-    console.log('Headers:', headers.keys().map(key => `${key}: ${headers.get(key)}`));
-  
-    // Log user-related values for debugging
-    console.log('User:', this.user);
-    console.log('User$ Observable:', this.user$);
-    console.log('User$$ BehaviorSubject:', this.user$$);
-  
+    console.log('Headers:', headers.keys().map(key => `${key}: ${headers.get(key)}`).join(', '));
+
+    // Update the local user object before making the PUT request
+    this.user = {
+      ...this.user, // Keep the current values
+      nickName,
+      email,
+      image,
+      height
+    };
+
+    // Update the BehaviorSubject with the new user data immediately
+    this.user$$.next(this.user);
+
+    // Log the updated user object before the PUT request
+    console.log('Updated Local User (Before Request):', this.user);
+
     // Make the PUT request to update the profile
     return this.http
-      .put<UserForAuth>('http://localhost:3030/users/me', {
-        nickName,
-        email,
-        image,
-        height
-      }, { headers })  // Attach the headers to the PUT request
-      .pipe(
-        tap((user) => {
-          // Log the updated user returned from the backend
-          console.log('Updated User:', user);
-  
-          // Update the BehaviorSubject with the new user data
-          this.user$$.next(user);
-  
-          // Log the current state of the user$$ observable
-          this.user$$.subscribe(currentUser => {
-            console.log('Current User in user$$:', currentUser);
-          });
-        })
-      );
+      .put<UserForAuth>('http://localhost:3030/users/me', requestBody, { headers })  // Attach the headers to the PUT request 
+
+
+      // !!!!   HAVE TO PERFORM UPDATE IN THE SERVER DATA (REGISTER??) !!!!!
   }
-  
+
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe()

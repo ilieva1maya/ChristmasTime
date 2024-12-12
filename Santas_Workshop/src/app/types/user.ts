@@ -14,13 +14,13 @@
 // }
 
 export interface UserForAuth {
-    accessToken: string;
+    accessToken?: string;
     nickName: string;
     email: string;
     image: string;
     height: number,
-    password: string;
-    id: string;
+    password?: string;
+    id?: string;
 }
 
 export interface ProfileDetails {
