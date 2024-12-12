@@ -16,11 +16,11 @@ export class CreatePresentComponent {
       return
     }
     
-    const {itemName, itemDescription, itemImage, itemCategory} = form.value;
+    const {itemName, itemDescription, itemImage, itemCategory, itemStatus} = form.value;
 
-    console.log(`From create-present.component.ts: ${itemName}, ${itemDescription}, ${itemImage}, ${itemCategory}`)
+    // console.log(`From create-present.component.ts: ${itemName}, ${itemDescription}, ${itemImage}, ${itemCategory}, ${itemStatus}`)
     this.router.navigate(['/warehouse'])
-    // this.apiService.createPresent(itemName, itemDescription, itemImage, itemCategory).subscribe(()=>{
+    // this.apiService.createPresent(itemName, itemDescription, itemImage, itemCategory, itemStatus).subscribe(()=>{
     //   this.router.navigate(['/warehouse'])
     // })
   }

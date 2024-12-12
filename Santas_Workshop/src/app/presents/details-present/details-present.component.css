@@ -1,0 +1,114 @@
+.details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .details-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .details-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .details-image img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .details-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .details-info p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .category {
+    font-weight: bold;
+  }
+  
+  .description {
+    font-style: italic;
+  }
+  
+  .status {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .edit-button, .finish-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-button {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+  }
+  
+  .edit-button:hover {
+    background-color: #ff8c00;
+  }
+  
+  .finish-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+  }
+  
+  .finish-button:hover {
+    background-color: #218838;
+  }
+  
+  .back-button {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .back-link {
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .back-link:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  

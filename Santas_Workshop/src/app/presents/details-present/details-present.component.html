@@ -1,1 +1,27 @@
-<p>details-present works!</p>
+<div class="details-container">
+    <div class="details-header">
+      <h1>{{present.name}}</h1> <!-- Display the name of the present -->
+    </div>
+  
+    <div class="details-body">
+      <div class="details-image">
+        <img [src]="present.image" alt="{{present.name}} Image" />
+      </div>
+  
+      <div class="details-info">
+        <p class="category">Category: <strong>{{present.category}}</strong></p>
+        <p class="description">Description: <strong>{{present.description}}</strong></p>
+        <p class="status">Status: <strong>{{present.status}}</strong></p> <!-- New Status Field -->
+      </div>
+    </div>
+  
+    <div class="action-buttons">
+      <button class="edit-button" (click)="editPresent()">Edit</button> <!-- Edit Button -->
+      <button class="finish-button" (click)="finishPresent()">Finish</button> <!-- Finish Button -->
+    </div>
+  
+    <div class="back-button">
+      <a routerLink="/presents" class="back-link">Back to List</a>
+    </div>
+  </div>
+  

@@ -9,7 +9,7 @@ const routes: Routes = [
     path: 'warehouse',
     children: [
       { path: '', pathMatch: 'full', component: WarehouseComponent },
-      { path: ':postId', component: DetailsPresentComponent }
+      { path: ':presentId', component: DetailsPresentComponent }
       // { path: ':postId', component: DetailsPresentComponent, canActivate: [AuthActivate] }
     ]
   },

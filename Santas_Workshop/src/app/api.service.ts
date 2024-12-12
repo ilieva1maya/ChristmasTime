@@ -16,6 +16,12 @@ export class ApiService {
     return this.http.get<Present[]>(`${apiUrl}/data/presents`);    
   }
 
+  getPresentById(id: string) {
+    const { apiUrl } = environment;
+
+    return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
+  }
+
   // getPresents(): Observable<Present[]> {
   //   const { apiUrl } = environment;
   //   return this.http.get<Present[]>(`${apiUrl}/data/presents`)
