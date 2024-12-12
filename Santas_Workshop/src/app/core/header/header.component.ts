@@ -15,7 +15,7 @@ export class HeaderComponent {
   };
 
   get nickName(): string {
-    return this.userService.user?.userData.nickName || '';
+    return this.userService.user?.nickName || '';
   }
 
   logout() {

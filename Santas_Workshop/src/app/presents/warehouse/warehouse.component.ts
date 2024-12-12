@@ -21,7 +21,7 @@ export class WarehouseComponent implements OnInit {
   };
 
   get userId(): string {
-    return this.userService.user?.userData.id || '';
+    return this.userService.user?.id || '';
   };
 
   ngOnInit(): void {
