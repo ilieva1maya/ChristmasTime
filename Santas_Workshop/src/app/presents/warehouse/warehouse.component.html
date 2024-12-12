@@ -1,50 +1,22 @@
-<div class="container">
-
-    <!-- <div *ngIf="arePresents" class="presents-list"> -->
-    <div class="presents-list">
-        <div class="present-item">
-            <div class="present-image">
-                <img src="https://www.decor-by-glassor.com/wareImages/23/2/023292_or-.jpg" alt="Present Image" />
-            </div>
-            <div class="present-info">
-                <h3>Item: Christmas ball</h3>
-                <div class="present-details">
-                    <p>Category: Decoration</p>
+<div class="container">    
+        <div *ngIf="arePresents" class="presents-list">
+            <div *ngFor="let present of presents" class="present-item">
+                <div class="present-image">
+                    <img src={{present.itemImage}} alt="Present Image" />
                 </div>
-                <h4>Details</h4>
+                <div class="present-info">
+                    <h3>Item: {{present.itemName}}</h3>
+                    <div class="present-details">
+                        <p>Category: {{present.itemCategory}}</p>
+                    </div>
+                    <h4 [routerLink]="present._id">Details</h4>
+                </div>
             </div>
         </div>
-        <div class="present-item">
-            <div class="present-image">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/71eZ2%2BHTr4L.jpg" alt="Present Image" />
-            </div>
-            <div class="present-info">
-                <h3>Item: Train</h3>
-                <div class="present-details">
-                    <p>Category: Toys</p>
-                </div>
-                <h4>Details</h4>
-            </div>
-        </div>
-        <div class="present-item">
-            <div class="present-image">
-                <img src="https://www.bybenson.com/cdn/shop/products/christmas-sweater-102993_1000x1000.jpg?v=1708297893"
-                    alt="Present Image" />
-            </div>
-            <div class="present-info">
-                <h3>Item: Christmas sweater</h3>
-                <div class="present-details">
-                    <p>Category: Clothing</p>
-                </div>
-                <h4>Details</h4>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- <div *ngIf="!arePresents" class="no-presents">
+   
+    <div *ngIf="!arePresents" class="no-presents">
         <h3>Warehouse is empty! Well Done!</h3>
         <h3>All the presents are on their way for Christmas!</h3>
         <img src="../../../assets/images/SantaOnSlide.jpg" alt="MagicChristmas" />
-    </div> -->
+    </div>
 </div>

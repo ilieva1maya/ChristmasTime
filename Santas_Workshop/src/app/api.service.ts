@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
-import { EMPTY } from 'rxjs';
+import { catchError, EMPTY, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,20 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getPresents() {
-    // const api = environment.apiUrl;
-    // или
-    const { apiUrl } = environment;
-    // console.log(`api.service/getPresents()/apiUrl:${apiUrl}`)
-
-    // return this.http.get<Present[]>(`${apiUrl}/warehouse`);
-    return EMPTY
+    const { apiUrl } = environment; 
+    return this.http.get<Present[]>(`${apiUrl}/data/presents`);    
   }
+
+  // getPresents(): Observable<Present[]> {
+  //   const { apiUrl } = environment;
+  //   return this.http.get<Present[]>(`${apiUrl}/data/presents`)
+  //     .pipe(
+  //       catchError(error => {
+  //         console.error('Error fetching presents:', error);
+  //         throw error; // Optionally, you can return a fallback value or handle errors differently
+  //       })
+  //     );
+  // }
 
   createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string) {    
     console.log(`From apiService.ts: ${itemName}, ${itemDescription}, ${itemImage}, ${itemCategory}`)

@@ -30,6 +30,9 @@ export class WarehouseComponent implements OnInit {
       if (presents) {
         this.arePresents = true;
         this.presents = presents;
+      } else {
+        console.log('No presents');
+        
       }
       
           
