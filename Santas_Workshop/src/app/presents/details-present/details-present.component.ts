@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from 'src/app/api.service';
+import { Present } from 'src/app/types/present';
 
 @Component({
   selector: 'app-details-present',
@@ -20,7 +21,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./details-present.component.css']
 })
 export class DetailsPresentComponent implements OnInit {
-  present: any;
+  present = {} as Present;
 
   constructor(private activeRoute: ActivatedRoute, private apiService: ApiService,) { }
 
@@ -49,7 +50,7 @@ export class DetailsPresentComponent implements OnInit {
   finishPresent(): void {
     console.log('Finish button clicked. Implement the finish functionality here.');
     // Mark present as finished or implement necessary functionality
-    this.present.status = 'Finished'; // Example of changing status
+    // this.present.itemStatus = 'Finished'; // Example of changing status
     // Optionally, call a service to update the present status on the server
   }
 }

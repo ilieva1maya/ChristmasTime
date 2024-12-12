@@ -1347,6 +1347,7 @@
                 itemDescription: "Red and shiny",
                 itemImage: "https://www.decor-by-glassor.com/wareImages/23/2/023292_or-.jpg",
                 itemCategory: "Decoration",
+                itemStatus: "Waiting for materials",
                 _id: "a283280e-17ae-4aa1-b568-d23546580681",
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e1": {
@@ -1355,6 +1356,7 @@
                 itemDescription: "Five wagons train",
                 itemImage: "https://images-na.ssl-images-amazon.com/images/I/71eZ2%2BHTr4L.jpg",
                 itemCategory: "Toys",
+                itemStatus: "Work in progress",
                 _id: "a606b31d-2310-4d98-bead-0684ae0ea0e1",
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e2": {
@@ -1363,6 +1365,7 @@
                 itemDescription: "Warm and cosy",
                 itemImage: "https://www.bybenson.com/cdn/shop/products/christmas-sweater-102993_1000x1000.jpg?v=1708297893",
                 itemCategory: "Clothing",
+                itemStatus: "For expedition",
                 _id: "a606b31d-2310-4d98-bead-0684ae0ea0e2",
             },
         },

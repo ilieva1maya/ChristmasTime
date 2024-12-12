@@ -18,6 +18,7 @@ export class ApiService {
 
   getPresentById(id: string) {
     const { apiUrl } = environment;
+    console.log(id)
 
     return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
   }
