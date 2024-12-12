@@ -1,15 +1,15 @@
 <div class="container">
     <div class="profile-container">
         <div class="profile-card">
-                <div class="profile-header">
-                    <img class="profile-image" src="../../../assets/images/Fugo.jpg" alt="Profile Picture" />
-                </div>
             <ng-container *ngIf="!showEditMode">
+                <div class="profile-header">
+                    <img class="profile-image" src={{profileDetails.image}} alt="Profile Picture" />
+                </div>
                 <div class="profile-details">
-                    <h2 class="profile-name">Fugo</h2>
-                    <p class="profile-height">3.21ft</p>
+                    <h2 class="profile-name">{{profileDetails.nickName}}</h2>
+                    <p class="profile-height">{{profileDetails.height}}</p>
                     <div class="profile-contact">
-                        <p><strong>Email:</strong> fugo@gmail.com</p>
+                        <p><strong>Email:</strong>{{profileDetails.email}}</p>
                     </div>
                 </div>
                 <button class="edit-button" (click)="onToggle()">Edit</button>
@@ -19,8 +19,11 @@
         [style]="{backgroundColor: form.invalid ? 'grey' : 'rgb(111, 77, 77)'}" -->
 
             <ng-container *ngIf="showEditMode">
-                <form [formGroup]="form" (ngSubmit)="saveProfileHandler()">
+                <form [formGroup]="form">
                     <div class="edit-form">
+                            <p>Image</p>
+                            <input type="text" name="image" id="image" [value]="profileDetails.image"
+                            formControlName="image">
                             <p>NickName: </p>
                             <input type="text" name="nickName" id="nickName" [value]="profileDetails.nickName"
                                 formControlName="nickName">
@@ -51,7 +54,7 @@
                             </p>
                         </ng-container>
                     </div>
-                <button class="green-button" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : 'green'}">Save</button>
+                <button class="green-button" (click)="saveProfileHandler()" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : 'green'}">Save</button>
                 <button class="red-button" (click)="onCancel($event)">Cancel</button>
                 </form>
             </ng-container>
