@@ -44,18 +44,9 @@
     color: #555;
   }
   
-  /* .category {
-    font-weight: bold;
-  } */
-  
   .description {
     font-style: italic;
   }
-  
-  /* .status {
-    color: #007bff;
-    font-weight: bold;
-  } */
   
   .action-buttons {
     display: flex;
