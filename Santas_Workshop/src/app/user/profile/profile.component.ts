@@ -10,8 +10,8 @@ import { ProfileDetails } from 'src/app/types/user';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-// export class ProfileComponent implements OnInit{
-  export class ProfileComponent {
+export class ProfileComponent implements OnInit{
+ 
   showEditMode: boolean = false;
 
   profileDetails: ProfileDetails = {
@@ -30,23 +30,23 @@ import { ProfileDetails } from 'src/app/types/user';
     height: [0],
   })
 
-  //   ngOnInit(): void {
-  //   const {nickName, email, image, height} = this.userService.user!;
+    ngOnInit(): void {
+    const {nickName, email, image, height} = this.userService.user!;
 
-  //   this.profileDetails = {
-  //     nickName,
-  //     email,
-  //     image,
-  //     height
-  //   }
+    this.profileDetails = {
+      nickName,
+      email,
+      image,
+      height
+    }
 
-  //   this.form.setValue({
-  //     nickName,
-  //     email,
-  //     image,
-  //     height
-  //   })
-  // }
+    this.form.setValue({
+      nickName,
+      email,
+      image,
+      height
+    })
+  }
 
   onToggle(): void {
     this.showEditMode = !this.showEditMode;
@@ -54,18 +54,20 @@ import { ProfileDetails } from 'src/app/types/user';
 
   saveProfileHandler(): void {
     if(this.form.invalid) {
+      console.log('form invalid')
       return;
     }
 
     this.profileDetails = this.form.value as ProfileDetails;
     const {nickName, email, image, height} = this.profileDetails;
 
-    console.log(nickName, email, image, height)
-    this.onToggle()
+    // console.log(nickName, email, image, height)
+    // this.onToggle()
 
-    // this.userService.updateProfile(nickName, email, image, height).subscribe(()=>{
-    //   this.onToggle();
-    // });    
+    this.userService.updateProfile(nickName, email, image, height).subscribe(()=>{
+      console.log("enter in userService.updateProfile")
+      this.onToggle();
+    });    
   }
 
   onCancel(e: Event) {
