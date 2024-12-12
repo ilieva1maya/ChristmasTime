@@ -93,3 +93,18 @@
     margin-top: 20px;
     border-radius: 8px;
 }
+
+/* Add this to your global styles or component-specific styles */
+
+/* Make the details text clickable */
+.present-info .details {
+    cursor: pointer; /* Make the cursor a pointer when hovering over the "Details" text */
+    color: #007bff; /* Optional: Change color to make it look like a link */
+    text-decoration: underline; /* Optional: Add an underline to make it look more like a link */
+  }
+  
+  /* Optionally add a hover effect for better user experience */
+  .present-info .details:hover {
+    color: #0056b3; /* Optional: Darker color on hover */
+  }
+  

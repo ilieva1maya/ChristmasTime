@@ -9,7 +9,9 @@
                     <div class="present-details">
                         <p>Category: {{present.itemCategory}}</p>
                     </div>
-                    <h4 [routerLink]="present._id">Details</h4>
+                    <a [routerLink]="present._id">
+                        <h4 class="details">Details</h4>
+                    </a>
                 </div>
             </div>
         </div>

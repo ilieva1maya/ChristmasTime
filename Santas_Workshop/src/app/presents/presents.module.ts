@@ -5,13 +5,15 @@ import { PresentsRoutingModule } from './presents-routing.module';
 import { WarehouseComponent } from './warehouse/warehouse.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { DetailsPresentComponent } from './details-present/details-present.component';
 
 
 
 @NgModule({
   declarations: [
     CreatePresentComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    DetailsPresentComponent
   ],
   imports: [
     CommonModule,
