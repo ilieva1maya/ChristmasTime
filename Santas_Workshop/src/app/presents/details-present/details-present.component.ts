@@ -63,17 +63,20 @@ export class DetailsPresentComponent implements OnInit {
     });
 
     this.showEditMode = !this.showEditMode;
-    console.log(this.form);
   }
 
   editPresent(): void {
 
-    console.log(this.form);
+      if(this.form.invalid) {
+        console.log('Form invalid')
+      return;
+    }
 
+    const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
+  
+    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus);
 
-    // if(this.form.invalid) {
-    //   return;
-    // }
+  
 
     // this.updatePresent = this.form.value as UpdatePresent;
     // const {itemName, itemDescription, itemImage, itemCategory, itemStatus} = this.updatePresent;

@@ -29,12 +29,6 @@
 
   <ng-container *ngIf="showEditMode">
     <form [formGroup]="form" (ngSubmit)="editPresent()">
-      <!-- <div class="details-header">
-          <label for="itemName" class="itemName">Item name:</label>
-          <input type="text" name="itemName" id="itemName" [value]="present.itemName" 
-          formControlName="itemName" /> 
-      </div> -->
-
       <div class="details-body">
         <div class="details-image">
           <img [src]="present.itemImage" alt="{{present.itemName}} Image" />
