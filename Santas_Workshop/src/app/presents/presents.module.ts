@@ -4,7 +4,7 @@ import { CreatePresentComponent } from './create-present/create-present.componen
 import { PresentsRoutingModule } from './presents-routing.module';
 import { WarehouseComponent } from './warehouse/warehouse.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsPresentComponent } from './details-present/details-present.component';
 
 
@@ -20,6 +20,7 @@ import { DetailsPresentComponent } from './details-present/details-present.compo
     PresentsRoutingModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PresentsModule { }

@@ -55,7 +55,7 @@
     margin-top: 20px;
   }
   
-  .edit-button, .finish-button {
+  .edit-button, .finish-button, .save-button, .cancel-button {
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 4px;
@@ -73,14 +73,24 @@
     background-color: #ff8c00;
   }
   
-  .finish-button {
+  .finish-button, .save-button {
     background-color: #28a745;
     color: white;
     border: none;
   }
   
-  .finish-button:hover {
+  .finish-button:hover, .save-button:hover {
     background-color: #218838;
+  }
+
+  .cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+  }
+
+  .cancel-button:hover {
+    background-color: rgb(159, 49, 49)
   }
   
   .back-button {

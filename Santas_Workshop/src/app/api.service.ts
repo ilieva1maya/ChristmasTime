@@ -25,4 +25,9 @@ export class ApiService {
     const { apiUrl } = environment;
     return this.http.post<Present>(`${apiUrl}/data/presents`, {itemName, itemDescription, itemImage, itemCategory, itemStatus});
   }
+
+  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {
+    console.log("From update (server logic later)", itemName, itemDescription, itemImage, itemCategory, itemStatus);
+    return EMPTY
+  }
 }

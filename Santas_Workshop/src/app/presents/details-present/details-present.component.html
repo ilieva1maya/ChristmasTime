@@ -1,27 +1,71 @@
 <div class="details-container">
+  <ng-container *ngIf="!showEditMode">
     <div class="details-header">
-      <h1>{{present.itemName}}</h1> <!-- Display the name of the present -->
+      <h1>{{present.itemName}}</h1>
     </div>
-  
+
     <div class="details-body">
       <div class="details-image">
         <img [src]="present.itemImage" alt="{{present.itemName}} Image" />
       </div>
-  
+
       <div class="details-info">
         <p class="category">Category: <strong>{{present.itemCategory}}</strong></p>
         <p class="description">Description: <strong>{{present.itemDescription}}</strong></p>
-        <p class="status">Status: <strong>{{present.itemStatus}}</strong></p> <!-- New Status Field -->
+        <p class="status">Status: <strong>{{present.itemStatus}}</strong></p>
       </div>
     </div>
-  
+
     <div class="action-buttons">
-      <button class="edit-button" (click)="editPresent()">Edit</button> <!-- Edit Button -->
-      <button class="finish-button" (click)="finishPresent()">Finish</button> <!-- Finish Button -->
+      <button class="edit-button" (click)="onToggle()">Edit</button>
+      <button class="finish-button" (click)="finishPresent()">Finish</button>
     </div>
-  
+
     <div class="back-button">
       <a routerLink="/warehouse" class="back-link">Back to List</a>
     </div>
-  </div>
-  
+  </ng-container>
+
+
+  <ng-container *ngIf="showEditMode">
+    <form [formGroup]="form" (ngSubmit)="editPresent()">
+      <!-- <div class="details-header">
+          <label for="itemName" class="itemName">Item name:</label>
+          <input type="text" name="itemName" id="itemName" [value]="present.itemName" 
+          formControlName="itemName" /> 
+      </div> -->
+
+      <div class="details-body">
+        <div class="details-image">
+          <img [src]="present.itemImage" alt="{{present.itemName}} Image" />
+        </div>
+
+        <div class="details-info">
+          <label for="itemName" class="itemName">Item name:</label>
+          <input type="text" name="itemName" id="itemName" [value]="present.itemName" formControlName="itemName" />
+
+          <label for="itemCategory" class="category">Category:</label>
+          <input type="text" name="itemCategory" id="itemCategory" [value]="present.itemCategory"
+            formControlName="itemCategory" />
+
+          <label for="itemDescription" class="description">Description:</label>
+          <input type="text" name="itemDescription" id="itemDescription" [value]="present.itemDescription"
+            formControlName="itemDescription" />
+
+          <label for="itemStatus" class="status">Status:</label>
+          <select type="text" name="itemStatus" id="itemStatus" [value]="present.itemStatus"
+            formControlName="itemStatus">
+            <option value="Waiting for materials">Waiting for materials</option>
+            <option value="Work in progress">Work in progress</option>
+            <option value="For expedition">For expedition</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="save-button">Save</button>
+        <button class="cancel-button" routerLink="/warehouse">Cancel</button>
+      </div>
+    </form>
+  </ng-container>
+</div>
