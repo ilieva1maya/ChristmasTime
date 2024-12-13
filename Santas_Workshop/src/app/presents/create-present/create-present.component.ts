@@ -13,10 +13,13 @@ export class CreatePresentComponent {
 
   createPresent(form: NgForm) {
     if(form.invalid) {
+      console.log('Create form invalid')
       return
     }
     
     const {itemName, itemDescription, itemImage, itemCategory, itemStatus} = form.value;
+
+    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus)
 
     // console.log(`From create-present.component.ts: ${itemName}, ${itemDescription}, ${itemImage}, ${itemCategory}, ${itemStatus}`)
     this.router.navigate(['/warehouse'])

@@ -1,20 +1,41 @@
 <div class="container">
   <div class="form-container">
-    <h2>Produce New Present</h2>
+    <h2>Create Present</h2>
     <form class="create-item-form" #form="ngForm" (ngSubmit)="createPresent(form)">
       <div class="form-group">
         <label for="itemName">Item Name</label>
-        <input type="text" id="itemName" name="itemName" placeholder="Enter item name" #inputItemName="ngModel" ngModel required />
+        <input type="text" id="itemName" name="itemName" placeholder="Enter item name" #inputItemName="ngModel" ngModel
+          required />
+        <ng-container *ngIf="inputItemName.touched">
+          <p class="error" *ngIf="inputItemName?.errors?.['required']">
+            Item name is required.
+          </p>
+        </ng-container>
       </div>
 
       <div class="form-group">
         <label for="itemDescription">Description</label>
-        <textarea id="itemDescription" name="itemDescription" placeholder="Enter item description" #textareaItemDescription="ngModel" ngModel required minlength="10"></textarea>
+        <textarea id="itemDescription" name="itemDescription" placeholder="Enter item description"
+          #textareaItemDescription="ngModel" ngModel required minlength="10"></textarea>
+        <ng-container *ngIf="textareaItemDescription.touched">
+          <p class="error" *ngIf="textareaItemDescription?.errors?.['required']">
+            Description is required.
+          </p>
+          <p class="error" *ngIf="textareaItemDescription?.errors?.['minlength']">
+            Description must be at least 10 characters long.
+          </p>
+        </ng-container>
       </div>
 
       <div class="form-group">
         <label for="itemImage">Image</label>
-        <input type="text" id="itemImage" name="itemImage" placeholder="Enter item image" #inputItemImage="ngModel" ngModel required>
+        <input type="text" id="itemImage" name="itemImage" placeholder="Enter item image" #inputItemImage="ngModel"
+          ngModel required>
+        <ng-container *ngIf="inputItemImage.touched">
+          <p class="error" *ngIf="inputItemImage?.errors?.['required']">
+            Image is required.
+          </p>
+        </ng-container>
       </div>
 
       <div class="form-group">
@@ -27,20 +48,31 @@
           <option value="Toys">Toys</option>
           <option value="Books">Books</option>
         </select>
+        <ng-container *ngIf="selectItemCategory.touched">
+          <p class="error" *ngIf="selectItemCategory?.errors?.['required']">
+            Category is required.
+          </p>
+        </ng-container>
       </div>
 
       <div class="form-group">
         <label for="itemStatus">Status</label>
         <select id="itemStatus" name="itemStatus" #selectItemStatus="ngModel" ngModel required>
           <option value="" disabled selected>Select status</option>
-          <option value="WaitingMaterials">Waiting for materials</option>
-          <option value="WorkInProgress">Work in progress</option>
-          <option value="ForExpedition">For expedition</option>
+          <option value="Waiting for materials">Waiting for materials</option>
+          <option value="Work in progress">Work in progress</option>
+          <!-- <option value="For expedition">For expedition</option> -->
         </select>
+        <ng-container *ngIf="selectItemStatus.touched">
+          <p class="error" *ngIf="selectItemStatus?.errors?.['required']">
+            Status is required.
+          </p>
+        </ng-container>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="submit-btn">Create Item</button>
+        <button type="submit" class="submit-btn" [disabled]="form.invalid"
+          [style]="{backgroundColor: form.invalid ? 'grey' : 'rgb(111, 77, 77)'}">Create Item</button>
       </div>
     </form>
   </div>
