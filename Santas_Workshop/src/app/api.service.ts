@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
@@ -13,8 +13,8 @@ export class ApiService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getPresents() {
-    const { apiUrl } = environment; 
-    return this.http.get<Present[]>(`${apiUrl}/data/presents`);    
+    const { apiUrl } = environment;
+    return this.http.get<Present[]>(`${apiUrl}/data/presents`);
   }
 
   getPresentById(id: string) {
@@ -22,14 +22,28 @@ export class ApiService {
     return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
   }
 
-  createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {    
+  createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {
     const { apiUrl } = environment;
-    return this.http.post<Present>(`${apiUrl}/data/presents`, {itemName, itemDescription, itemImage, itemCategory, itemStatus});
+    return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus });
   }
 
-  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {
-    console.log("From update (server logic later)", itemName, itemDescription, itemImage, itemCategory, itemStatus);
-    this.router.navigate(['/warehouse']);
-    return EMPTY
+  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string) {
+    const { apiUrl } = environment;
+    const token = localStorage.getItem('accessToken');
+    // this.router.navigate(['/warehouse']);
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    // If token exists, add it to the headers
+    if (token) {
+      headers = headers.set('X-Authorization', token); // Add the token to the header
+    }
+
+    return this.http.put<Present>(`${apiUrl}/data/presents/${id}`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, id }).subscribe(() => {
+      console.log(`${apiUrl}/data/presents/${id}`, itemName, itemDescription, itemImage, itemCategory, itemStatus, id, { headers })
+      this.router.navigate(['/warehouse']);
+    });
   }
 }

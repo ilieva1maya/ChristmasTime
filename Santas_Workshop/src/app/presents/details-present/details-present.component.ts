@@ -15,6 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from 'src/app/api.service';
 import { Present, UpdatePresent } from 'src/app/types/present';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-details-present',
@@ -24,13 +25,18 @@ import { Present, UpdatePresent } from 'src/app/types/present';
 export class DetailsPresentComponent implements OnInit {
   present = {} as Present;
   showEditMode: boolean = false;
+  id = '';
 
   constructor(
     private activeRoute: ActivatedRoute,
     private apiService: ApiService,
     private fb: FormBuilder,
-    private router: Router,
+    private userService: UserService,    
   ) { }
+
+  // get token(): string {
+  //   return this.userService.user?.accessToken || '';
+  // }
 
   form = this.fb.group({
     itemName: ['', [Validators.required]],
@@ -42,8 +48,8 @@ export class DetailsPresentComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data) => {
-      const id = data['presentId'];
-      this.apiService.getPresentById(id).subscribe((present) => {
+      this.id = data['presentId'];
+      this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
       });
     });
@@ -67,7 +73,7 @@ export class DetailsPresentComponent implements OnInit {
       return;
     }
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
-    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!)
+    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!)
   }
 
   finishPresent(): void {
