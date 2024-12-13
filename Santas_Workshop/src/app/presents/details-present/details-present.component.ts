@@ -11,7 +11,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from 'src/app/api.service';
 import { Present, UpdatePresent } from 'src/app/types/present';
@@ -25,15 +25,12 @@ export class DetailsPresentComponent implements OnInit {
   present = {} as Present;
   showEditMode: boolean = false;
 
-  // updatePresent: UpdatePresent = {
-  //   itemName: '',
-  //   itemDescription: '',
-  //   itemImage: '',
-  //   itemCategory: '',
-  //   itemStatus: '',
-  // }
-
-  constructor(private activeRoute: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder) { }
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private apiService: ApiService,
+    private fb: FormBuilder,
+    private router: Router,
+  ) { }
 
   form = this.fb.group({
     itemName: ['', [Validators.required]],
@@ -61,35 +58,20 @@ export class DetailsPresentComponent implements OnInit {
       itemCategory,
       itemStatus
     });
-
     this.showEditMode = !this.showEditMode;
   }
 
   editPresent(): void {
-
-      if(this.form.invalid) {
-        console.log('Form invalid')
+    if (this.form.invalid) {
+      console.log('Form invalid')
       return;
     }
-
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
-  
-    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus);
-
-  
-
-    // this.updatePresent = this.form.value as UpdatePresent;
-    // const {itemName, itemDescription, itemImage, itemCategory, itemStatus} = this.updatePresent;
-
-    // this.apiService.updatePresent(itemName, itemDescription, itemImage, itemCategory, itemStatus).subscribe(()=>{
-    //   console.log("From edit function",itemName, itemDescription, itemImage, itemCategory, itemStatus)
-    // });    
-
+    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!)
   }
 
   finishPresent(): void {
     console.log('Finish button clicked. Implement the finish functionality here.');
-
   }
 }
 

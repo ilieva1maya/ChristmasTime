@@ -39,8 +39,14 @@
           <input type="text" name="itemName" id="itemName" [value]="present.itemName" formControlName="itemName" />
 
           <label for="itemCategory" class="category">Category:</label>
-          <input type="text" name="itemCategory" id="itemCategory" [value]="present.itemCategory"
-            formControlName="itemCategory" />
+          <select type="text" name="itemCategory" id="itemCategory" [value]="present.itemCategory"
+            formControlName="itemCategory">
+            <option value="Decoration">Decoration</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Home">Home</option>
+            <option value="Toys">Toys</option>
+            <option value="Books">Books</option>
+            </select>
 
           <label for="itemDescription" class="description">Description:</label>
           <input type="text" name="itemDescription" id="itemDescription" [value]="present.itemDescription"

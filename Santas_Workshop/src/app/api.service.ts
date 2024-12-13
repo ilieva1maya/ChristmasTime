@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
 import { catchError, EMPTY, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getPresents() {
     const { apiUrl } = environment; 
@@ -28,6 +29,7 @@ export class ApiService {
 
   updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {
     console.log("From update (server logic later)", itemName, itemDescription, itemImage, itemCategory, itemStatus);
+    this.router.navigate(['/warehouse']);
     return EMPTY
   }
 }
