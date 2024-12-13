@@ -22,10 +22,10 @@ export class RegisterComponent {
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
     // image: ['', [Validators.required, imageValidator(VALID_URLS)]],  
     image: ['', [Validators.required]],
-    height: ['', [Validators.required]], 
+    height: ['', [Validators.required]],
     passGroup: this.fb.group({
-      password: ['', [Validators.required, ]],
-      rePassword: ['', [Validators.required, ]],
+      password: ['', [Validators.required,]],
+      rePassword: ['', [Validators.required,]],
     }, {
       validators: [matchPasswordsValidator('password', 'rePassword')]
     }),
@@ -38,16 +38,12 @@ export class RegisterComponent {
   register(): void {
 
     if (this.form.invalid) {
-      console.log('Form invalid')
       return;
     }
 
-    console.log('Form valid')
-
-    const {nickName, email, image, height, passGroup: {password, rePassword} = {}} = this.form.value;    
-    this.userService.register(nickName!, email!, image!, Number(height!), password!, rePassword!).subscribe(()=>{
+    const { nickName, email, image, height, passGroup: { password, rePassword } = {} } = this.form.value;
+    this.userService.register(nickName!, email!, image!, Number(height!), password!, rePassword!).subscribe(() => {
       this.router.navigate(['/warehouse'])
     })
   }
 }
-

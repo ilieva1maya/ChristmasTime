@@ -12,20 +12,15 @@ export class CreatePresentComponent {
   constructor(private apiService: ApiService, private router: Router){}
 
   createPresent(form: NgForm) {
-    if(form.invalid) {
-      console.log('Create form invalid')
+    if(form.invalid) {      
       return
     }
     
     const {itemName, itemDescription, itemImage, itemCategory, itemStatus} = form.value;
 
-    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus)
-
-    // console.log(`From create-present.component.ts: ${itemName}, ${itemDescription}, ${itemImage}, ${itemCategory}, ${itemStatus}`)
-    this.router.navigate(['/warehouse'])
-    // this.apiService.createPresent(itemName, itemDescription, itemImage, itemCategory, itemStatus).subscribe(()=>{
-    //   this.router.navigate(['/warehouse'])
-    // })
+    this.apiService.createPresent(itemName, itemDescription, itemImage, itemCategory, itemStatus).subscribe(()=>{
+      this.router.navigate(['/warehouse'])
+    })
   }
 }
 
