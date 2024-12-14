@@ -20,7 +20,7 @@ export interface UserForAuth {
     image: string;
     height: number,
     password?: string;
-    id?: string;
+    _id?: string;
 }
 
 export interface ProfileDetails {

@@ -22,12 +22,14 @@ export class ApiService {
     return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
   }
 
-  createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string) {
+  createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, owner: string) {
     const { apiUrl } = environment;
-    return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus });
+    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus, owner)
+    return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
   }
 
-  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string) {
+  // _id or id ???
+  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string,) {
     const { apiUrl } = environment;
     const token = localStorage.getItem('accessToken');
     // this.router.navigate(['/warehouse']);

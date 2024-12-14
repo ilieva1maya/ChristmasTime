@@ -4,6 +4,7 @@ export interface Present {
     itemImage: string;
     itemCategory: string;
     itemStatus: string,
+    owner: string,
     _id: string;
 }
 

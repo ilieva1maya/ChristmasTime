@@ -25,7 +25,8 @@ import { UserService } from 'src/app/user/user.service';
 export class DetailsPresentComponent implements OnInit {
   present = {} as Present;
   showEditMode: boolean = false;
-  id = '';
+  isOwner: boolean = false;
+  id = '';  
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -33,6 +34,8 @@ export class DetailsPresentComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,    
   ) { }
+
+  
 
   // get token(): string {
   //   return this.userService.user?.accessToken || '';
@@ -51,8 +54,11 @@ export class DetailsPresentComponent implements OnInit {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
+        if (this.present.owner == this.userService.user?._id) {
+          this.isOwner = true;
+        }          
       });
-    });
+    });  
   }
 
   onToggle(): void {
@@ -64,7 +70,7 @@ export class DetailsPresentComponent implements OnInit {
       itemCategory,
       itemStatus
     });
-    this.showEditMode = !this.showEditMode;
+    this.showEditMode = !this.showEditMode;    
   }
 
   editPresent(): void {
@@ -73,11 +79,13 @@ export class DetailsPresentComponent implements OnInit {
       return;
     }
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
+ 
     this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!)
   }
 
   finishPresent(): void {
     console.log('Finish button clicked. Implement the finish functionality here.');
+    console.log(this.present.owner)
   }
 }
 

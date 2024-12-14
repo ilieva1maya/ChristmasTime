@@ -16,10 +16,12 @@
       </div>
     </div>
 
-    <div class="action-buttons">
-      <button class="edit-button" (click)="onToggle()">Edit</button>
-      <button class="finish-button" (click)="finishPresent()">Finish</button>
-    </div>
+    <ng-container *ngIf="isOwner">
+      <div class="action-buttons">
+        <button class="edit-button" (click)="onToggle()">Edit</button>
+        <button class="finish-button" (click)="finishPresent()">Finish</button>
+      </div>
+    </ng-container>
 
     <div class="back-button">
       <a routerLink="/warehouse" class="back-link">Back to List</a>
@@ -46,7 +48,7 @@
             <option value="Home">Home</option>
             <option value="Toys">Toys</option>
             <option value="Books">Books</option>
-            </select>
+          </select>
 
           <label for="itemDescription" class="description">Description:</label>
           <input type="text" name="itemDescription" id="itemDescription" [value]="present.itemDescription"
