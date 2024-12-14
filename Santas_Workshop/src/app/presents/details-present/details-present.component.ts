@@ -54,6 +54,7 @@ export class DetailsPresentComponent implements OnInit {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
+               
         if (this.present.owner == this.userService.user?._id) {
           this.isOwner = true;
         }          
@@ -79,13 +80,15 @@ export class DetailsPresentComponent implements OnInit {
       return;
     }
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
+    const owner = this.present.owner;
+    console.log(owner, this.userService.user?._id)
  
-    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!)
+    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!, owner)
   }
 
   finishPresent(): void {
     console.log('Finish button clicked. Implement the finish functionality here.');
-    console.log(this.present.owner)
+    
   }
 }
 

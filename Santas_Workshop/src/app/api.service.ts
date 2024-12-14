@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   // _id or id ???
-  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string,) {
+  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string) {
     const { apiUrl } = environment;
     const token = localStorage.getItem('accessToken');
     // this.router.navigate(['/warehouse']);
@@ -43,8 +43,8 @@ export class ApiService {
       headers = headers.set('X-Authorization', token); // Add the token to the header
     }
 
-    return this.http.put<Present>(`${apiUrl}/data/presents/${id}`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, id }).subscribe(() => {
-      console.log(`${apiUrl}/data/presents/${id}`, itemName, itemDescription, itemImage, itemCategory, itemStatus, id, { headers })
+    return this.http.put<Present>(`${apiUrl}/data/presents/${id}`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, id, owner }).subscribe(() => {
+      // console.log(`${apiUrl}/data/presents/${id}`, itemName, itemDescription, itemImage, itemCategory, itemStatus, id, { headers })
       this.router.navigate(['/warehouse']);
     });
   }

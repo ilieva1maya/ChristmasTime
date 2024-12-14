@@ -1342,7 +1342,7 @@
     var seedData = {
         presents: {
             "a283280e-17ae-4aa1-b568-d23546580681": {
-                _ownerId: "7749fa5f-d3da-4a90-b117-36697033515f",
+                owner: "7749fa5f-d3da-4a90-b117-36697033515f",
                 itemName: "Christmas ball",
                 itemDescription: "Red and shiny",
                 itemImage: "https://www.decor-by-glassor.com/wareImages/23/2/023292_or-.jpg",
@@ -1351,7 +1351,7 @@
                 _id: "a283280e-17ae-4aa1-b568-d23546580681",
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e1": {
-                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                owner: "35c62d76-8152-4626-8712-eeb96381bea8",
                 itemName: "Train",
                 itemDescription: "Five wagons train",
                 itemImage: "https://images-na.ssl-images-amazon.com/images/I/71eZ2%2BHTr4L.jpg",
@@ -1360,7 +1360,7 @@
                 _id: "a606b31d-2310-4d98-bead-0684ae0ea0e1",
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e2": {
-                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                owner: "35c62d76-8152-4626-8712-eeb96381bea8",
                 itemName: "Christmas sweater",
                 itemDescription: "Warm and cosy",
                 itemImage: "https://www.bybenson.com/cdn/shop/products/christmas-sweater-102993_1000x1000.jpg?v=1708297893",
