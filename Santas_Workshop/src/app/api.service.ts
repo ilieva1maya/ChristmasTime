@@ -48,4 +48,21 @@ export class ApiService {
       this.router.navigate(['/warehouse']);
     });
   }
+
+  deletePresent(id: string) {
+    const { apiUrl } = environment;
+    const token = localStorage.getItem('accessToken');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (token) {
+      headers = headers.set('X-Authorization', token);
+    }
+
+    return this.http.delete<Present>(`${apiUrl}/data/presents/${id}`).subscribe(() => {
+      this.router.navigate(['/warehouse']);
+    });
+  }
 }

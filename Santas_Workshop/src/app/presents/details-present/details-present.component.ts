@@ -87,8 +87,10 @@ export class DetailsPresentComponent implements OnInit {
   }
 
   finishPresent(): void {
-    console.log('Finish button clicked. Implement the finish functionality here.');
-    
+    const owner = this.present.owner;
+    console.log(owner, this.userService.user?._id)
+ 
+    this.apiService.deletePresent(this.id!)
   }
 }
 
