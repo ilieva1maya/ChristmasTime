@@ -26,6 +26,22 @@ export class UserService implements OnDestroy {
     });
   }
 
+  // constructor(private http: HttpClient) {
+  //   this.userSubscription = this.user$.subscribe((user) => {
+  //     this.user = user;
+  //   });
+  
+  //   // Try to load user from localStorage
+  //   const storedUser = localStorage.getItem(this.USER_KEY);
+  //   if (storedUser) {
+  //     const parsedUser = JSON.parse(storedUser) as UserForAuth;
+  //     this.user$$.next(parsedUser);
+  //   }
+  // }
+  
+
+
+
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>('http://localhost:3030/users/login', { email, password }, { observe: 'response' })  // Observe the full response
@@ -109,6 +125,55 @@ export class UserService implements OnDestroy {
       .put<UserForAuth>('http://localhost:3030/users/me', requestBody, { headers })
   }
 
+  // updateProfile(nickName: string, email: string, image: string, height: number) {
+  //   const token = localStorage.getItem('accessToken');
+  
+  //   const requestBody = {
+  //     nickName,
+  //     email,
+  //     image,
+  //     height
+  //   };
+  
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   });
+  
+  //   if (token) {
+  //     headers = headers.set('X-Authorization', token);
+  //   }
+  
+  //   // Update the local user object and emit it to the user$$ BehaviorSubject
+  //   const updatedUser = {
+  //     ...this.user,  // Spread the existing user object to keep any unchanged properties
+  //     nickName,
+  //     email,
+  //     image,
+  //     height
+  //   };
+  
+  //   // Update BehaviorSubject with new user data
+  //   this.user$$.next(updatedUser);
+  
+  //   // Persist the updated user data to localStorage (optional but recommended if you want to keep the updated info across sessions)
+  //   localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
+  
+  //   // Return the HTTP PUT request to update the user profile on the backend
+  //   return this.http
+  //     .put<UserForAuth>('http://localhost:3030/users/me', requestBody, { headers })
+  //     .pipe(
+  //       tap((response) => {
+  //         // If needed, persist the updated user with the access token again
+  //         const user = response;
+  //         if (user && user.accessToken) {
+  //           localStorage.setItem('accessToken', user.accessToken);
+  //         }
+  //         // Emit the updated user data to the BehaviorSubject
+  //         this.user$$.next(user);
+  //       })
+  //     );
+  // }
+  
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe()

@@ -32,20 +32,6 @@ export class DetailsPresentComponent implements OnInit {
     return this.userService.user?._id
   }
 
-  isReserved(id: string) {
-    console.log("Enter in isReserved")
-    console.log('id', id)
-    console.log('this.user:', this.user)
-
-    const isReservedUser = this.present.subscribers.find((r) => {
-      return r === this.userService.user?._id;
-    });
-
-    if (!isReservedUser) {
-      this.present.subscribers.push(id)
-    }
-  }
-
   form = this.fb.group({
     itemName: ['', [Validators.required]],
     itemDescription: ['', [Validators.required, Validators.minLength(10)]],
@@ -101,6 +87,17 @@ export class DetailsPresentComponent implements OnInit {
         console.log('Update process completed.');
       }
     });
+  }
+
+  isReserved(id: string) {
+
+    const isReservedUser = this.present.subscribers.find((r) => {
+      return r === this.userService.user?._id;
+    });
+
+    if (!isReservedUser) {
+      this.present.subscribers.push(id)
+    }
   }
 
   finishPresent(): void {
