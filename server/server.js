@@ -1349,6 +1349,7 @@
                 itemCategory: "Decoration",
                 itemStatus: "Waiting for materials",
                 _id: "a283280e-17ae-4aa1-b568-d23546580681",
+                subscribers: ['7550fa5f-d3da-4a90-b117-36697033515g', '7649fa5f-d3da-4a90-b117-36697033515a'],
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e1": {
                 owner: "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1358,6 +1359,7 @@
                 itemCategory: "Toys",
                 itemStatus: "Work in progress",
                 _id: "a606b31d-2310-4d98-bead-0684ae0ea0e1",
+                subscribers: ['7749fa5f-d3da-4a90-b117-36697033515f'],
             },
             "a606b31d-2310-4d98-bead-0684ae0ea0e2": {
                 owner: "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1367,6 +1369,7 @@
                 itemCategory: "Clothing",
                 itemStatus: "For expedition",
                 _id: "a606b31d-2310-4d98-bead-0684ae0ea0e2",
+                subscribers: [],
             },
         },
         catalog: {

@@ -1,4 +1,5 @@
 export interface Present {
+    subscribers: string[];
     itemName: string;
     itemDescription: string;
     itemImage: string;
