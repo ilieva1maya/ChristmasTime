@@ -28,25 +28,20 @@ export class ApiService {
     return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
   }
 
-  // _id or id ???
-  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string) {
+  updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string): Observable<Present> {
     const { apiUrl } = environment;
     const token = localStorage.getItem('accessToken');
-    // this.router.navigate(['/warehouse']);
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    // If token exists, add it to the headers
     if (token) {
-      headers = headers.set('X-Authorization', token); // Add the token to the header
+      headers = headers.set('X-Authorization', token);
     }
 
-    return this.http.put<Present>(`${apiUrl}/data/presents/${id}`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, id, owner }).subscribe(() => {
-      // console.log(`${apiUrl}/data/presents/${id}`, itemName, itemDescription, itemImage, itemCategory, itemStatus, id, { headers })
-      this.router.navigate(['/warehouse']);
-    });
+    return this.http.put<Present>(`${apiUrl}/data/presents/${id}`,
+      { itemName, itemDescription, itemImage, itemCategory, itemStatus, id, owner }, { headers });
   }
 
   deletePresent(id: string) {

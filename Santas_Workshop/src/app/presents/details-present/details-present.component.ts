@@ -81,14 +81,26 @@ export class DetailsPresentComponent implements OnInit {
 
   editPresent(): void {
     if (this.form.invalid) {
-      console.log('Form invalid')
+      console.log('Form invalid');
       return;
     }
+
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
     const owner = this.present.owner;
-    console.log(owner, this.userService.user?._id)
 
-    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!, owner)
+    this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!, owner).subscribe({
+      next: (updatedPresent) => {
+        this.showEditMode = false;
+
+        this.present = updatedPresent;
+      },
+      error: (error) => {
+        console.error('Error updating present:', error);
+      },
+      complete: () => {
+        console.log('Update process completed.');
+      }
+    });
   }
 
   finishPresent(): void {
@@ -98,4 +110,3 @@ export class DetailsPresentComponent implements OnInit {
     this.apiService.deletePresent(this.id!)
   }
 }
-
