@@ -10,7 +10,6 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', component: WarehouseComponent },
       { path: ':presentId', component: DetailsPresentComponent }
-      // { path: ':postId', component: DetailsPresentComponent, canActivate: [AuthActivate] }
     ]
   },
   {
@@ -18,11 +17,6 @@ const routes: Routes = [
     component: CreatePresentComponent,
     // canActivate: [AuthActivate]
   },
-  // {
-  //   path: 'warehouse',
-  //   component: WarehouseComponent,
-  //   // canActivate: [AuthActivate]
-  // }
 ];
 
 @NgModule({

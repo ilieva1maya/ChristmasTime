@@ -9,7 +9,7 @@
                     <div class="present-details">
                         <p>Category: {{present.itemCategory}}</p>
                     </div>
-                    <a [routerLink]="present._id">
+                    <a *ngIf="isLoggedIn" [routerLink]="present._id">
                         <h4 class="details">Details</h4>
                     </a>
                 </div>

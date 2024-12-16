@@ -61,9 +61,6 @@ export class ProfileComponent implements OnInit{
     this.profileDetails = this.form.value as ProfileDetails;
     const {nickName, email, image, height} = this.profileDetails;
 
-    // console.log(nickName, email, image, height)
-    // this.onToggle()
-
     this.userService.updateProfile(nickName, email, image, height).subscribe(()=>{
       console.log("enter in userService.updateProfile")
       this.onToggle();

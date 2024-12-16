@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-details-present',
-//   templateUrl: './details-present.component.html',
-//   styleUrls: ['./details-present.component.css']
-// })
-// export class DetailsPresentComponent {
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,20 +15,36 @@ export class DetailsPresentComponent implements OnInit {
   present = {} as Present;
   showEditMode: boolean = false;
   isOwner: boolean = false;
-  id = '';  
+  id = '';
 
   constructor(
     private activeRoute: ActivatedRoute,
     private apiService: ApiService,
     private fb: FormBuilder,
-    private userService: UserService,    
+    private userService: UserService,
   ) { }
 
-  
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+  };
 
-  // get token(): string {
-  //   return this.userService.user?.accessToken || '';
-  // }
+  get user() {
+    return this.userService.user?._id
+  }
+
+  isReserved(id: string) {
+    console.log("Enter in isReserved")
+    console.log('id', id)
+    console.log('this.user:', this.user)
+
+    const isReservedUser = this.present.subscribers.find((r) => {
+      return r === this.userService.user?._id;
+    });
+
+    if (!isReservedUser) {
+      this.present.subscribers.push(id)
+    }
+  }
 
   form = this.fb.group({
     itemName: ['', [Validators.required]],
@@ -54,12 +59,12 @@ export class DetailsPresentComponent implements OnInit {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
-               
+
         if (this.present.owner == this.userService.user?._id) {
           this.isOwner = true;
-        }          
+        }
       });
-    });  
+    });
   }
 
   onToggle(): void {
@@ -71,7 +76,7 @@ export class DetailsPresentComponent implements OnInit {
       itemCategory,
       itemStatus
     });
-    this.showEditMode = !this.showEditMode;    
+    this.showEditMode = !this.showEditMode;
   }
 
   editPresent(): void {
@@ -82,14 +87,14 @@ export class DetailsPresentComponent implements OnInit {
     const { itemName, itemDescription, itemImage, itemCategory, itemStatus } = this.form.value;
     const owner = this.present.owner;
     console.log(owner, this.userService.user?._id)
- 
+
     this.apiService.updatePresent(itemName!, itemDescription!, itemImage!, itemCategory!, itemStatus!, this.id!, owner)
   }
 
   finishPresent(): void {
     const owner = this.present.owner;
     console.log(owner, this.userService.user?._id)
- 
+
     this.apiService.deletePresent(this.id!)
   }
 }
