@@ -6,6 +6,7 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsPresentComponent } from './details-present/details-present.component';
+import { ReservePresentComponent } from './reserve-present/reserve-present.component';
 
 
 
@@ -13,7 +14,8 @@ import { DetailsPresentComponent } from './details-present/details-present.compo
   declarations: [
     CreatePresentComponent,
     WarehouseComponent,
-    DetailsPresentComponent
+    DetailsPresentComponent,
+    ReservePresentComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,65 @@
+.reserve-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reserve-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .reservation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .reservation-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reserved-by {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  .additional-comment {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  .additional-comment span {
+    font-style: italic;
+  }
+  
+  .reserve-action {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .reserve-link {
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .reserve-link:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  

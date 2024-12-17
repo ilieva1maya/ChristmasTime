@@ -22,11 +22,8 @@
         <button class="finish-button" (click)="finishPresent()">Finish</button>
       </div>
     </ng-container>
-
-    <div class="reservations">
-      <button class="reserve" (click)="isReserved(user!)">Reserve</button>
-      <p>Reservations: <span>{{present.subscribers.length! || 0}}</span></p>
-    </div>
+    
+    <app-reserve-present/>
 
     <div class="back-button">
       <a routerLink="/warehouse" class="back-link">Back to List</a>
