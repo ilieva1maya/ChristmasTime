@@ -45,7 +45,7 @@ export class DetailsPresentComponent implements OnInit {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
-
+       
         if (this.present.owner == this.userService.user?._id) {
           this.isOwner = true;
         }
@@ -88,17 +88,6 @@ export class DetailsPresentComponent implements OnInit {
       }
     });
   }
-
-  // isReserved(id: string) {
-
-  //   const isReservedUser = this.present.subscribers.find((r) => {
-  //     return r === this.userService.user?._id;
-  //   });
-
-  //   if (!isReservedUser) {
-  //     this.present.subscribers.push(id)
-  //   }
-  // }
 
   finishPresent(): void {
     const owner = this.present.owner;

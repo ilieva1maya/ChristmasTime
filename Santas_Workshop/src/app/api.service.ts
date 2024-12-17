@@ -33,8 +33,9 @@ export class ApiService {
     return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
   }
 
-  createReservation(reservationComment: string, userId: string, presentId:string, reservationId: string){
+  createReservation(reservationComment: string, userId: string, presentId:string){
     const { apiUrl } = environment;
+    console.log(reservationComment, userId, presentId)
     // return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, userId, presentId, reservationId })
   }
 

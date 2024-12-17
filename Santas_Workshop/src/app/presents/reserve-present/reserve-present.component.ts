@@ -3,6 +3,7 @@ import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { Reservation } from 'src/app/types/reservation';
 import { UserService } from 'src/app/user/user.service';
+import { PresentService } from '../present.service';
 
 @Component({
   selector: 'app-reserve-present',
@@ -16,6 +17,7 @@ export class ReservePresentComponent implements OnInit {
   constructor(private apiService: ApiService,
     private fb: FormBuilder,
     private userService: UserService,
+    private presentService: PresentService
   ) { }
 
   get user() {
@@ -23,7 +25,7 @@ export class ReservePresentComponent implements OnInit {
   }
 
   get present() {
-    return this.apiService.getPresentById
+    return this.presentService.present
   }
 
   form = this.fb.group({
@@ -32,13 +34,16 @@ export class ReservePresentComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getReservations().subscribe({
-      next: (reservations) => {       
+            next: (reservations) => {
         this.reservations = reservations;
+        console.log("User:", this.user)
+        console.log("Present:", this.present)
+        console.log("Reservations:", this.reservations)
       },
       error: (err) => {
         console.error('Error: ', err)
       }
-    })
+    })    
   }
 
   createReservation(form: NgForm) {
@@ -46,12 +51,8 @@ export class ReservePresentComponent implements OnInit {
       return
     }
 
-    const {reservationComment} = form.value;
-    
-    // this.apiService.createReservation(reservationComment, this.user!, presentId, reservationId)
-    // .subscribe(()=>{
-    //   this.router.navigate(['/warehouse'])
-    // })
+    const { reservationComment } = form.value;
 
+    this.apiService.createReservation(reservationComment, this.user!, this.present?._id!)
   }
 }
