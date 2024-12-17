@@ -1,17 +1,12 @@
-// import { Post } from "./post";
+import { Reservation } from "./reservation";
 
-// export interface User {
-//     themes: string[];
-//     posts: Post[];
-//     _id: string;
-//     tel: string;
-//     email: string;
-//     username: string;
-//     password: string;
-//     created_at: string;
-//     updatedAt: string;
-//     __v: number;
-// }
+export interface User {
+    // presents: string[];
+    reservations: Reservation[];
+    _id: string;
+    nickName: string;
+    image: string;
+}
 
 export interface UserForAuth {
     accessToken?: string;

@@ -50,16 +50,16 @@
   
   .reserve-link {
     font-size: 1.2rem;
-    color: #007bff;
+    color: rgb(214, 161, 25);
     text-decoration: none;
-    border: 1px solid #007bff;
+    border: 1px solid rgb(214, 161, 25);
     padding: 10px 20px;
     border-radius: 4px;
     transition: background-color 0.3s;
   }
   
   .reserve-link:hover {
-    background-color: #007bff;
+    background-color: rgb(214, 161, 25);
     color: white;
   }
   
