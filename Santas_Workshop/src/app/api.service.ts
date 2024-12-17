@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Reservation } from './types/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,11 @@ export class ApiService {
     return this.http.get<Present[]>(`${apiUrl}/data/presents`);
   }
 
+  getReservations(){
+    const { apiUrl } = environment;
+    return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`);
+  }
+
   getPresentById(id: string) {
     const { apiUrl } = environment;
     return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
@@ -26,6 +32,10 @@ export class ApiService {
     const { apiUrl } = environment;
     console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus, owner)
     return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
+  }
+
+  createReservation(){
+    
   }
 
   updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string): Observable<Present> {

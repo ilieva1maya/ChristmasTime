@@ -89,16 +89,16 @@ export class DetailsPresentComponent implements OnInit {
     });
   }
 
-  isReserved(id: string) {
+  // isReserved(id: string) {
 
-    const isReservedUser = this.present.subscribers.find((r) => {
-      return r === this.userService.user?._id;
-    });
+  //   const isReservedUser = this.present.subscribers.find((r) => {
+  //     return r === this.userService.user?._id;
+  //   });
 
-    if (!isReservedUser) {
-      this.present.subscribers.push(id)
-    }
-  }
+  //   if (!isReservedUser) {
+  //     this.present.subscribers.push(id)
+  //   }
+  // }
 
   finishPresent(): void {
     const owner = this.present.owner;

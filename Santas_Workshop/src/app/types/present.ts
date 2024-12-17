@@ -1,5 +1,7 @@
+import { Reservation } from "./reservation";
+
 export interface Present {
-    subscribers: string[];
+    reservations: Reservation[];
     itemName: string;
     itemDescription: string;
     itemImage: string;

@@ -1,20 +1,31 @@
-<div class="reserve-container">
-    <h2 class="reserve-title">Reservations</h2>
-    
-    <div class="reservation-list">
-      <div class="reservation-item">
-        <p class="reserved-by">Reserved by: Peter</p>
-        <p class="additional-comment"><span>Additional comment: Please inform me when the product is ready for expedition</span></p>
-      </div>
-  
-      <div class="reservation-item">
-        <p class="reserved-by">Reserved by: Boris</p>
-        <p class="additional-comment"><span>Additional comment: I want the item for 20th of December</span></p>
-      </div>
-    </div>
-  
-    <div class="reserve-action">
-      <a routerLink="/warehouse" class="reserve-link">Reserve your ITEM NAME</a>
+<!-- <div *ngFor="let reservation of reservations" class="reserve-container">
+  <h3 class="reserve-title">Reservations</h3>
+  <div  class="reservation-list">
+    <div class="reservation-item">      
+      <p class="reserved-by">Reserved by: {{reservation.userId.nickName}}</p>
+      <p class="additional-comment"><span>{{reservation.comment}}</span></p>
     </div>
   </div>
-  
+  <div class="reserve-action">
+    <h3 class="reserve-title">If you want to reserve, please add your comment here</h3>
+    <textarea id="reservationComment" name="reservationComment" placeholder="Enter your reservation comment here..."></textarea>
+    <a routerLink="/warehouse" class="reserve-link">Reserve your {{reservation.presentId.itemName}}</a>
+  </div>
+</div> -->
+
+<div *ngFor="let reservation of reservations" class="reserve-container">
+  <h6 class="reserve-title">Reservations</h6>
+
+  <div class="reservation-list">
+    <div class="reservation-item">      
+      <p class="reserved-by">Reserved by: {{reservation.userId.nickName}}</p>
+      <p class="additional-comment"><span>{{reservation.comment}}</span></p>
+    </div>
+  </div>
+
+  <div class="reserve-action">
+    <h6 class="reserve-title">If you want to reserve, please add your comment here</h6>
+    <textarea id="reservationComment" name="reservationComment" placeholder="Enter your reservation comment here..."></textarea>
+    <a routerLink="/warehouse" class="reserve-link">Reserve your {{reservation.presentId.itemName}}</a>
+  </div>
+</div>
