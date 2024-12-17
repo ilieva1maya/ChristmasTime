@@ -148,4 +148,11 @@
     background-color: rgb(214, 161, 25);
     color: white;
   }
+
+  p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+  }
   

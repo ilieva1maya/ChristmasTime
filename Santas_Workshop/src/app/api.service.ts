@@ -29,13 +29,13 @@ export class ApiService {
   }
 
   createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, owner: string) {
-    const { apiUrl } = environment;
-    console.log(itemName, itemDescription, itemImage, itemCategory, itemStatus, owner)
+    const { apiUrl } = environment;   
     return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
   }
 
-  createReservation(){
-    
+  createReservation(reservationComment: string, userId: string, presentId:string, reservationId: string){
+    const { apiUrl } = environment;
+    // return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, userId, presentId, reservationId })
   }
 
   updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string): Observable<Present> {
