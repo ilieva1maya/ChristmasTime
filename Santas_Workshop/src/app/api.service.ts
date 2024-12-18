@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
@@ -30,28 +30,32 @@ export class ApiService {
     return this.http.get<Present[]>(`${apiUrl}/data/presents`);
   }
 
-  // getReservations() {
-  //   const { apiUrl } = environment;
-  //   return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`);
-  // }
-
   getReservations(): Observable<Reservation[]> {
     const { apiUrl } = environment;
 
-    return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`).pipe(
-      catchError(error => {
-        if (error.status === 404) {
-          console.error('Reservations not found (404)');
-          // Handle 404 error - could return an empty array or any other fallback logic
-          return EMPTY; // or return of([]) if you prefer to return an empty array
-        }
-        // You can handle other status codes if needed
-        console.error('An unexpected error occurred:', error);
-        return EMPTY; // Or any other fallback logic
-      })
-    );
+    return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`)
+    // .pipe(
+    //   catchError(error => {
+    //     if (error.status === 404) {
+    //       console.error('Reservations not found (404)');         
+    //       return EMPTY;
+    //     }
+    //     console.error('An unexpected error occurred:', error);
+    //     return EMPTY;
+    //   })
+    // );
   }
 
+  // getReservationsById(id: string): Observable<any> {
+  //   const { apiUrl } = environment;
+    
+  //     const params = new HttpParams()
+  //       .set('where', `id="${id}"`)
+  //       .set('load', 'owner=_ownerId:users');
+  
+  //     return this.http.get<any>(`${apiUrl}/data/reservations`, { params });    
+
+  // }
 
   getPresentById(id: string) {
     const { apiUrl } = environment;

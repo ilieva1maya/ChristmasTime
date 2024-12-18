@@ -40,7 +40,11 @@ export class ReservePresentComponent implements OnInit {
 
       this.apiService.getReservations().subscribe({
         next: (reservations) => {
-          this.reservations = reservations.filter(reservation => reservation.presentId._id === this.id);
+          const currentPresentId = this.id
+          this.reservations = reservations.filter(reservation => reservation.presentId.toString() === currentPresentId);
+      
+           console.log(this.reservations)
+          
         },
         error: (err) => {
           console.error('Error fetching reservations: ', err);

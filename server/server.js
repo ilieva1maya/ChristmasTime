@@ -1350,6 +1350,16 @@
                 presentId: "a606b31d-2310-4d98-bead-0684ae0ea0e2",
                 _createdOn: 1734553340971,
                 _id: "cfc1f360-a403-44e3-9adb-8403486c3075"
+            },
+            "dda1f360-a403-44e3-9adb-8403486c3075":
+            {
+                _ownerId: "934906f4-728d-4c95-b63e-f36ac2cc0c3f",
+                reservationComment: "Please reserve the first one for me",
+                nickName: "Maria",
+                userId: "934906f4-728d-4c95-b63e-f36ac2cc0c3f",
+                presentId: "a606b31d-2310-4d98-bead-0684ae0ea0e1",
+                _createdOn: 1734553340971,
+                _id: "dda1f360-a403-44e3-9adb-8403486c3075"
             }
         },
         presents: {
