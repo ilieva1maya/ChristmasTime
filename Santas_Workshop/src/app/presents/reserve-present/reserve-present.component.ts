@@ -55,6 +55,6 @@ export class ReservePresentComponent implements OnInit {
       return
     }
     const { reservationComment } = form.value;
-    this.apiService.createReservation(reservationComment, this.user?.nickName!, this.user?._id!, this.present._id!);
+    this.apiService.createReservation(reservationComment, this.user!, this.present._id!);
   };
 }

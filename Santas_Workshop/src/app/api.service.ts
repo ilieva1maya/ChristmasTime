@@ -2,10 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
-import { BehaviorSubject, catchError, EMPTY, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Reservation } from './types/reservation';
-import { User } from './types/user';
+import { UserForAuth } from './types/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,6 @@ export class ApiService {
   PRESENT_KEY = '[present]';
 
   presentSubscription: Subscription;
-
-  // get isLogged(): boolean {
-  //   return !!this.user;
-  // }
 
   constructor(private http: HttpClient, private router: Router) {
     this.presentSubscription = this.present$.subscribe((present) => {
@@ -49,10 +45,10 @@ export class ApiService {
     return this.http.post<Present>(`${apiUrl}/data/presents`, { itemName, itemDescription, itemImage, itemCategory, itemStatus, owner });
   }
 
-  createReservation(reservationComment: string, userNickname: string, userId: string, presentId: string) {
+  createReservation(reservationComment: string, user: UserForAuth, presentId: string) {
     const { apiUrl } = environment;
-    console.log(reservationComment, userNickname, userId, presentId)
-    // return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, userNickname, userId, presentId })
+    console.log(reservationComment, user, presentId)
+    return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, user, presentId })
   }
 
   updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string): Observable<Present> {
