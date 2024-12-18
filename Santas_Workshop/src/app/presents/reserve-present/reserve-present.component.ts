@@ -55,7 +55,10 @@ export class ReservePresentComponent implements OnInit {
     }
     const { reservationComment } = form.value;
 
-    this.apiService.createReservation(reservationComment, this.user!, this.present._id!).subscribe(() => {
+    const nickName = this.user?.nickName;
+    const userId = this.user?._id;
+
+    this.apiService.createReservation(reservationComment, nickName!, userId!, this.present._id!).subscribe(() => {
       this.ngOnInit();
     });
   }

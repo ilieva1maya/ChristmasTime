@@ -1340,13 +1340,16 @@
         }
     };
     var seedData = {
-        reservations: {
-            "1113280e-17ae-4aa1-b568-d23546580681": {               
-                comment: "Please inform me when is on stock",
-                userNickname: "Maria",
-                userId: "7749fa5f-d3da-4a90-b117-36697033515f",
-                presentId: "a283280e-17ae-4aa1-b568-d23546580681",
-                _id: "1113280e-17ae-4aa1-b568-d23546580681",
+        reservations: {            
+            "cfc1f360-a403-44e3-9adb-8403486c3075":
+            {
+                _ownerId: "784906f4-728d-4c95-b63e-f36ac2cc0c3f",
+                reservationComment: "I need two of these, size M and L.",
+                nickName: "Peter",
+                userId: "784906f4-728d-4c95-b63e-f36ac2cc0c3f",
+                presentId: "a606b31d-2310-4d98-bead-0684ae0ea0e2",
+                _createdOn: 1734553340971,
+                _id: "cfc1f360-a403-44e3-9adb-8403486c3075"
             }
         },
         presents: {
