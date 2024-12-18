@@ -1343,6 +1343,7 @@
         reservations: {
             "1113280e-17ae-4aa1-b568-d23546580681": {               
                 comment: "Please inform me when is on stock",
+                userNickname: "Maria",
                 userId: "7749fa5f-d3da-4a90-b117-36697033515f",
                 presentId: "a283280e-17ae-4aa1-b568-d23546580681",
                 _id: "1113280e-17ae-4aa1-b568-d23546580681",

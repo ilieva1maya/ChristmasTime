@@ -5,6 +5,7 @@ export interface Reservation {
     _id: string;
     comment: string;
     userId: User;
+    // userNickname: string;
     presentId: Present;
 }
 

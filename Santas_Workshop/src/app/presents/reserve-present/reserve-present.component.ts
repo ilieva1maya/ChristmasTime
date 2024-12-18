@@ -26,39 +26,35 @@ export class ReservePresentComponent implements OnInit {
   ) { }
 
   get user() {
-    return this.userService.user?._id
-  }
+    return this.userService.user;
+  };
 
   form = this.fb.group({
     reservationComment: ['', [Validators.required, Validators.minLength(10)]],
-  })
+  });
 
   ngOnInit(): void {
     this.apiService.getReservations().subscribe({
-            next: (reservations) => {
+      next: (reservations) => {
         this.reservations = reservations;
-        console.log("User:", this.user);  
-        console.log("Reservations:", this.reservations);
       },
       error: (err) => {
-        console.error('Error: ', err)
+        console.error('Error: ', err);
       }
-    })
+    });
     this.activeRoute.params.subscribe((data) => {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
-        this.present = present;             
+        this.present = present;
       });
-    });   
+    });
   }
 
   createReservation(form: NgForm) {
     if (form.invalid) {
       return
     }
-
     const { reservationComment } = form.value;
-
-    this.apiService.createReservation(reservationComment, this.user!, this.present._id!)
-  }
+    this.apiService.createReservation(reservationComment, this.user?.nickName!, this.user?._id!, this.present._id!);
+  };
 }

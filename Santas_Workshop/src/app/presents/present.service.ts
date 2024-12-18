@@ -62,8 +62,7 @@ export class PresentService implements OnDestroy {
     this.present$ = this.present$$.asObservable();
 
     this.presentSubscription = this.present$.subscribe((present) => {
-      this.present = present;
-      console.log('Current Present:', this.present);  // Logs each change of the present
+      this.present = present;      
     });
   }
 
