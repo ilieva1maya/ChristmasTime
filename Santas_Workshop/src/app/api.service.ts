@@ -47,9 +47,15 @@ export class ApiService {
 
   createReservation(reservationComment: string, user: UserForAuth, presentId: string) {
     const { apiUrl } = environment;
-    console.log(reservationComment, user, presentId)
-    return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, user, presentId })
+    return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, user, presentId });
   }
+  
+
+  // createReservation(reservationComment: string, user: UserForAuth, presentId: string) {
+  //   const { apiUrl } = environment;
+  //   console.log(reservationComment, user, presentId)
+  //   return this.http.post<Reservation>(`${apiUrl}/data/reservations`, { reservationComment, user, presentId })
+  // }
 
   updatePresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, id: string, owner: string): Observable<Present> {
     const { apiUrl } = environment;

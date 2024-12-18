@@ -73,3 +73,44 @@
     </form>
   </ng-container>
 </div>
+
+<!-- details-present.component.html -->
+<!-- <div class="details-container">
+  <ng-container *ngIf="!showEditMode">
+    <div class="details-header">
+      <h1>{{present.itemName}}</h1>
+    </div>
+
+    <div class="details-body">
+      <div class="details-image">
+        <img [src]="present.itemImage" alt="{{present.itemName}} Image" />
+      </div>
+
+      <div class="details-info">
+        <p class="category">Category: <strong>{{present.itemCategory}}</strong></p>
+        <p class="description">Description: <strong>{{present.itemDescription}}</strong></p>
+        <p class="status">Status: <strong>{{present.itemStatus}}</strong></p>
+      </div>
+    </div>
+
+    <ng-container *ngIf="isOwner">
+      <div class="action-buttons">
+        <button class="edit-button" (click)="onToggle()">Edit</button>
+        <button class="finish-button" (click)="finishPresent()">Finish</button>
+      </div>
+    </ng-container>
+
+   
+    <app-reserve-present></app-reserve-present>
+
+    <div class="back-button">
+      <a routerLink="/warehouse" class="back-link">Back to List</a>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showEditMode">
+    <form [formGroup]="form" (ngSubmit)="editPresent()">
+   
+    </form>
+  </ng-container>
+</div> -->

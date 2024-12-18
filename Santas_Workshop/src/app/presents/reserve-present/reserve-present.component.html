@@ -1,8 +1,8 @@
-<div *ngFor="let reservation of reservations" class="reserve-container">
+<div *ngIf="present._id">
   <h6 class="reserve-title">Reservations</h6>
 
   <div class="reservation-list">
-    <div class="reservation-item">
+    <div class="reservation-item" *ngFor="let reservation of reservations">
       <p class="reserved-by">Reserved by: {{reservation.userId.nickName}}</p>
       <p class="additional-comment"><span>{{reservation.comment}}</span></p>
     </div>
@@ -13,15 +13,17 @@
     <form #form="ngForm" (ngSubmit)="createReservation(form)">
       <textarea id="reservationComment" name="reservationComment" placeholder="Enter your reservation comment here..."
         #textareareservationComment="ngModel" ngModel required minlength="10"></textarea>
-        <ng-container *ngIf="textareareservationComment.touched">
-          <p class="error" *ngIf="textareareservationComment?.errors?.['required']">
-            Comment is required.
-          </p>
-          <p class="error" *ngIf="textareareservationComment?.errors?.['minlength']">
-            Comment must be at least 10 characters long.
-          </p>
-        </ng-container>
-      <button class="reserve-link">Reserve your {{reservation.presentId.itemName}}</button>
+
+      <ng-container *ngIf="textareareservationComment.touched">
+        <p class="error" *ngIf="textareareservationComment?.errors?.['required']">
+          Comment is required.
+        </p>
+        <p class="error" *ngIf="textareareservationComment?.errors?.['minlength']">
+          Comment must be at least 10 characters long.
+        </p>
+      </ng-container>
+
+      <button class="reserve-link">Reserve your {{present.itemName}}</button>
     </form>
   </div>
 </div>
