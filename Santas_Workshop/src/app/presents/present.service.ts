@@ -1,65 +1,73 @@
+// import { Injectable, OnDestroy } from '@angular/core';
+// import { BehaviorSubject, Subscription } from 'rxjs';
+// import { Present } from '../types/present';
+// import { HttpClient } from '@angular/common/http';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class PresentService implements OnDestroy{
+
+//   private present$$ = new BehaviorSubject<Present>;
+//   private present$ = this.present$$.asObservable();
+
+//   constructor(private http: HttpClient) {
+//        this.presentSubscription = this.present$.subscribe((present) => {
+//       this.present = present;
+//     })
+
+//     this.present$$ = new BehaviorSubject<Present>({
+//       reservations: this.present?.reservations!,
+//       itemName: this.present?.itemName!,
+//       itemDescription: this.present?.itemDescription!,
+//       itemImage: this.present?.itemImage!,
+//       itemCategory: this.present?.itemCategory!,
+//       itemStatus: this.present?.itemStatus!,
+//       owner: this.present?.owner!,
+//       _id: this.present?._id!,
+//     });
+//   }
+
+//   present: Present | undefined;
+//   PRESENT_KEY = '[present]';
+
+//   presentSubscription: Subscription;
+
+//   ngOnDestroy(): void {
+//     this.presentSubscription.unsubscribe()
+//   }
+// }
+
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Present } from '../types/present';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PresentService implements OnDestroy{
+export class PresentService implements OnDestroy {
+  private present$$: BehaviorSubject<Present | undefined>;
 
-  private present$$ = new BehaviorSubject<Present | undefined>(undefined);
-  private present$ = this.present$$.asObservable();
+  private present$: Observable<Present | undefined>;
 
   present: Present | undefined;
-  PRESENT_KEY = '[present]';
+  PRESENT_KEY = '[presentData]';
 
   presentSubscription: Subscription;
-  
+
   constructor(private http: HttpClient) {
+    this.present$$ = new BehaviorSubject<Present | undefined>(undefined);
+
+    this.present$ = this.present$$.asObservable();
+
     this.presentSubscription = this.present$.subscribe((present) => {
       this.present = present;
+      console.log('Current Present:', this.present);  // Logs each change of the present
     });
   }
 
   ngOnDestroy(): void {
-    this.presentSubscription.unsubscribe()
+    this.presentSubscription.unsubscribe();
   }
 }
-
-
-// export class PresentService implements OnDestroy {
-
-//   private present$$ = new BehaviorSubject<Present | undefined>(undefined); // Initial value is undefined
-//   private present$ = this.present$$.asObservable();
-
-//   present: Present | undefined;
-//   PRESENT_KEY = '[present]';
-
-//   presentSubscription: Subscription;
-  
-//   constructor(private http: HttpClient) {
-//     // Subscribe to the BehaviorSubject to set the value to this.present
-//     this.presentSubscription = this.present$.subscribe((present) => {
-//       this.present = present;
-//     });
-//   }
-
-//   ngOnDestroy(): void {
-//     this.presentSubscription.unsubscribe();
-//   }
-
-//   // Example method to update the present data
-//   fetchPresent(presentId: string): void {
-//     this.http.get<Present>(`http://yourapi.com/presents/${presentId}`).subscribe(
-//       (data) => {
-//         // Assuming the API returns a Present object
-//         this.present$$.next(data); // Update BehaviorSubject with the new data
-//       },
-//       (error) => {
-//         console.error('Error fetching present:', error);
-//       }
-//     );
-//   }
-// }
-
