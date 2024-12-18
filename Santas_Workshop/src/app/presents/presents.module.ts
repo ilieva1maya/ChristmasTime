@@ -9,7 +9,6 @@ import { DetailsPresentComponent } from './details-present/details-present.compo
 import { ReservePresentComponent } from './reserve-present/reserve-present.component';
 
 
-
 @NgModule({
   declarations: [
     CreatePresentComponent,

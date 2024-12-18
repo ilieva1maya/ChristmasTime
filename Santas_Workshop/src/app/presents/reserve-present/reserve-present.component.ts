@@ -21,7 +21,6 @@ export class ReservePresentComponent implements OnInit {
   constructor(private apiService: ApiService,
     private fb: FormBuilder,
     private userService: UserService,
-    private presentService: PresentService,
     private activeRoute: ActivatedRoute,
   ) { }
 
@@ -58,3 +57,4 @@ export class ReservePresentComponent implements OnInit {
     this.apiService.createReservation(reservationComment, this.user!, this.present._id!);
   };
 }
+
