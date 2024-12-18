@@ -2,7 +2,7 @@
 
 Welcome to my first student's project in Angular!
 
-This is a site where Santa's dwarfs can register and start to produce (create) presents. The "work in progress" presents are visible in the warehouse (catalog). The progress of each presenet is reflected (edit) only by the owner and when the is ready, to be finished (delete).
+This is a site where Santa's dwarfs can register and start to produce (create) presents. The "work in progress" presents are visible in the warehouse (catalog). The progress of each presenet is reflected (edit) only by the owner. When the present "is ready", it can be finished (delete).
 
 These are the covered functionalities:
 * client – server architecture
@@ -11,18 +11,19 @@ These are the covered functionalities:
 * authentication
 * client-side routing
 * error handling and data validation
-
-I was not using consistent approach through the project, for instance:
 * reactive and template driven forms
-This was with the purposes of my own learning curve, to try different approaches and learn more.
+
+Used frameworks and libraries:
+* Angular CLI
+* RxJS
 
 Hosting URL: https://christmas-time-fbd76.web.app
 
 Enjoy!
+
  
 ## How to build 
 ```
-
 git clone https://github.com/ilieva1maya/ChristmasTime
 
 npm i
@@ -32,12 +33,14 @@ npm i
 ## How to run
 
 ```
-<!-- cd Plant-a-Tree/client
+cd ChristmasTime/server
 
-npm run dev
+node server.js
 
-cd Plant-a-Tree/server
+cd ChristmasTime/Santas_Workshop
 
-node server.js -->
+npm i
+
+ng serve
 
 ```
