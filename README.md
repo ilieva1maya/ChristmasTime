@@ -21,6 +21,7 @@ Bonus features:
 * SVG
 * Geolocation
 * RxJS
+* Angular Animations
 * Firebase: Hosting URL: https://christmas-time-fbd76.web.app
 
 
