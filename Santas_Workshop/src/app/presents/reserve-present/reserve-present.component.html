@@ -3,7 +3,7 @@
 
   <div class="reservation-list">
     <div class="reservation-item" *ngFor="let reservation of reservations">
-      <p class="reserved-by">Reserved by: {{reservation.userId.nickName}}</p>
+      <p class="reserved-by">Reserved by: {{reservation.nickName}}</p>
       <p class="additional-comment"><span>{{reservation.reservationComment}}</span></p>
     </div>
   </div>
@@ -22,8 +22,9 @@
           Comment must be at least 10 characters long.
         </p>
       </ng-container>
-
-      <button class="reserve-link">Reserve your {{present.itemName}}</button>
+      <ng-container *ngIf="!form.invalid">
+        <button class="reserve-link">Reserve your {{present.itemName}}</button>
+      </ng-container>
     </form>
   </div>
 </div>
