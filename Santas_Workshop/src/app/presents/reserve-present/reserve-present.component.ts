@@ -45,15 +45,10 @@ export class ReservePresentComponent implements OnInit {
           const currentPresentId = this.id
           this.reservations = reservations.filter(reservation => reservation.presentId.toString() === currentPresentId);
           console.log(this.reservations)
-          
-          // const userIds = Array.from(new Set(this.reservations.map(reservation => reservation.userId)));
-          // userIds.forEach(userId => {
-          //   if (!this.users[userId]) {
-          //     this.apiService.getUserById(userId).subscribe(user => {
-          //       this.users[userId] = user;  // Store user data by userId
-          //     });
-          //   }
-          // });
+
+          this.reservations.forEach(reservation => {
+            console.log("Reservation NickName:", reservation.nickName);  // logging each reservation's nickName
+          });
         },
         error: (err) => {
           console.error('Error fetching reservations: ', err);
@@ -74,7 +69,8 @@ export class ReservePresentComponent implements OnInit {
     this.apiService.createReservation(reservationComment, nickName!, userId!, this.present._id!).subscribe(() => {
       this.ngOnInit();
     });
+
+    form.reset();
   }
 }
-
 
