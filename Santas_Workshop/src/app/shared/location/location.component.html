@@ -1,0 +1,24 @@
+<div class="locations-container">
+    <div *ngIf="userLocation" class="location-container">
+        <h3>Your Current Location</h3>
+        <p><strong>Latitude:</strong> {{ userLocation.latitude }}</p>
+        <p><strong>Longitude:</strong> {{ userLocation.longitude }}</p>
+        <p><strong>Accuracy:</strong> {{ userLocation.accuracy }} meters</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+    </div>
+
+    <div class="south-pole-location">
+        <h3>South Pole Location</h3>
+        <p><strong>Latitude:</strong> 90.0000°</p>
+        <p><strong>Longitude:</strong> 0.0000°</p>
+        <p><strong>Accuracy:</strong> 2-5 meters</p>
+    </div>
+
+    <div class="background-image"></div>
+</div>
+
+
+
