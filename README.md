@@ -1,8 +1,8 @@
 # ChristmasTime
 
-Welcome to my first student's project in Angular!
+Welcome to Santa’s Warehouse!
 
-This is a site where Santa's dwarfs can register and start to produce (create) presents. The "work in progress" presents are visible in the warehouse (catalog). The progress of each presenet is reflected (edit) only by the owner. When the present "is ready", it can be finished (delete).
+This is where Santa’s elves are hired (register) and start to create presents. The presents in progress are displayed in the warehouse catalog for everyone to see. Each present’s progress can only be edited by its owner (the elf responsible). Once a present is finished and ready, it can be marked as complete (deleted from the system).
 
 These are the covered functionalities:
 * client – server architecture
@@ -17,7 +17,12 @@ Used frameworks and libraries:
 * Angular CLI
 * RxJS
 
-Hosting URL: https://christmas-time-fbd76.web.app
+Bonus features:
+* SVG
+* Geolocation
+* RxJS
+* Firebase: Hosting URL: https://christmas-time-fbd76.web.app
+
 
 Enjoy!
 
