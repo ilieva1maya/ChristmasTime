@@ -15,6 +15,7 @@ export class ReservePresentComponent implements OnInit {
   reservations: Reservation[] = [];
   present: Present = {} as Present;
   id: string = '';
+  users: any = {};
 
   form = this.fb.group({
     reservationComment: ['', [Validators.required, Validators.minLength(10)]],
@@ -36,15 +37,23 @@ export class ReservePresentComponent implements OnInit {
       this.id = data['presentId'];
       this.apiService.getPresentById(this.id).subscribe((present) => {
         this.present = present;
+        console.log(this.present._id)
       });
 
       this.apiService.getReservations().subscribe({
         next: (reservations) => {
           const currentPresentId = this.id
           this.reservations = reservations.filter(reservation => reservation.presentId.toString() === currentPresentId);
-      
-           console.log(this.reservations)
+          console.log(this.reservations)
           
+          // const userIds = Array.from(new Set(this.reservations.map(reservation => reservation.userId)));
+          // userIds.forEach(userId => {
+          //   if (!this.users[userId]) {
+          //     this.apiService.getUserById(userId).subscribe(user => {
+          //       this.users[userId] = user;  // Store user data by userId
+          //     });
+          //   }
+          // });
         },
         error: (err) => {
           console.error('Error fetching reservations: ', err);
@@ -67,3 +76,5 @@ export class ReservePresentComponent implements OnInit {
     });
   }
 }
+
+

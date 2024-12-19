@@ -4,7 +4,7 @@
   <div class="reservation-list">
     <div class="reservation-item" *ngFor="let reservation of reservations">
       <p class="reserved-by">Reserved by: {{reservation.userId.nickName}}</p>
-      <p class="additional-comment"><span>{{reservation.comment}}</span></p>
+      <p class="additional-comment"><span>{{reservation.reservationComment}}</span></p>
     </div>
   </div>
 
