@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Present } from './types/present';
-import { BehaviorSubject, catchError, EMPTY, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Reservation } from './types/reservation';
-import { UserForAuth } from './types/user';
 
 @Injectable({
   providedIn: 'root'
@@ -33,33 +32,12 @@ export class ApiService {
   getReservations(): Observable<Reservation[]> {
     const { apiUrl } = environment;
 
-    return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`)
-    // .pipe(
-    //   catchError(error => {
-    //     if (error.status === 404) {
-    //       console.error('Reservations not found (404)');         
-    //       return EMPTY;
-    //     }
-    //     console.error('An unexpected error occurred:', error);
-    //     return EMPTY;
-    //   })
-    // );
+    return this.http.get<Reservation[]>(`${apiUrl}/data/reservations`);
   }
-
-  // getReservationsById(id: string): Observable<any> {
-  //   const { apiUrl } = environment;
-    
-  //     const params = new HttpParams()
-  //       .set('where', `id="${id}"`)
-  //       .set('load', 'owner=_ownerId:users');
-  
-  //     return this.http.get<any>(`${apiUrl}/data/reservations`, { params });    
-
-  // }
 
   getPresentById(id: string) {
     const { apiUrl } = environment;
-    return this.http.get<Present>(`${apiUrl}/data/presents/${id}`)
+    return this.http.get<Present>(`${apiUrl}/data/presents/${id}`);
   }
 
   createPresent(itemName: string, itemDescription: string, itemImage: string, itemCategory: string, itemStatus: string, owner: string) {
