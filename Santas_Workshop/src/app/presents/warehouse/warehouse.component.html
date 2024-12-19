@@ -1,21 +1,21 @@
 <div class="container">    
-        <div *ngIf="arePresents" class="presents-list">
-            <div *ngFor="let present of presents" class="present-item">
-                <div class="present-image">
-                    <img src={{present.itemImage}} alt="Present Image" />
+    <div *ngIf="arePresents" class="presents-list">
+        <div *ngFor="let present of presents" class="present-item">
+            <div class="present-image">
+                <img [src]="present.itemImage" alt="Present Image" />
+            </div>
+            <div class="present-info">
+                <h3>Item: {{present.itemName}}</h3>
+                <div class="present-details">
+                    <p>Category: {{present.itemCategory}}</p>
                 </div>
-                <div class="present-info">
-                    <h3>Item: {{present.itemName}}</h3>
-                    <div class="present-details">
-                        <p>Category: {{present.itemCategory}}</p>
-                    </div>
-                    <a *ngIf="isLoggedIn" [routerLink]="present._id">
-                        <h4 class="details">Details</h4>
-                    </a>
-                </div>
+                <a *ngIf="isLoggedIn" [routerLink]="present._id">
+                    <h4 class="details">Details</h4>
+                </a>
             </div>
         </div>
-   
+    </div>
+
     <div *ngIf="!arePresents" class="no-presents">
         <h3>Warehouse is empty! Well Done!</h3>
         <h3>All the presents are on their way for Christmas!</h3>

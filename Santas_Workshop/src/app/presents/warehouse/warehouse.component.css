@@ -39,11 +39,17 @@
     width: calc(33% - 20px);
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .present-item img {
     width: 100%;
     height: auto;
+    max-height: 250px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -51,12 +57,14 @@
 .present-info h3 {
     font-size: 1.25rem;
     color: #333;
+    margin-bottom: 10px;
 }
 
 .present-info h4 {
     font-size: 1rem;
     color: #007bff;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .present-details {
@@ -75,12 +83,6 @@
     margin-bottom: 15px;
 }
 
-.no-presents .add-present {
-    font-weight: bold;
-    color: #007bff;
-    cursor: pointer;
-}
-
 .no-presents img {
     width: 100%;
     max-width: 500px;
@@ -93,7 +95,6 @@
     color: #007bff;
     text-decoration: underline;
 }
-
 
 .present-info .details:hover {
     color: #0056b3;
