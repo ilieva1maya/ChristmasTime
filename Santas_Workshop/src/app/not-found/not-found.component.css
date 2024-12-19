@@ -3,38 +3,33 @@
     flex-direction:column;
     align-items: center;
     text-align: center;
-    min-height: 75vh;  /* Make sure it takes full viewport height */
+    min-height: 75vh;
 }
 
-/* Image Styling: Make it smaller and responsive */
 .error-image {
-    max-width: 20%; /* Scale the image to 50% of its container width */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 20%;
+    height: auto;
 }
 
-/* Error message Styling */
 .error-message p {
-    font-size: 1.2rem;  /* Slightly larger text for visibility */
-    color: #333; /* Dark text color */
+    font-size: 1.2rem;
+    color: #333;
 }
 
 .error-message a {
     color: red;
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Make the link stand out */
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .error-message a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
 
-
-
-/* Styling for the SVG icon (hot chocolate icon) */
 .error-message svg {
-    width: 30px; /* Set a size for the SVG */
+    width: 30px;
     height: 30px;
-    margin-left: 5px; /* Space between the text and the icon */
-    vertical-align: middle; /* Align the icon vertically with the text */
-    fill: #84615b; /* Match the icon color with the link color */
+    margin-left: 5px;
+    vertical-align: middle;
+    fill: #84615b;
 }

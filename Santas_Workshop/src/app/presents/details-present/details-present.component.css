@@ -64,11 +64,6 @@
   }
   
   .edit-button {
-    /* background-color: #ffa500;
-    color: white;
-    border: none;
-
-    font-size: 1.2rem; */
     color: #ff8c00;
     text-decoration: none;
     border: 1px solid #ff8c00;
@@ -83,9 +78,6 @@
   }
   
   .finish-button, .save-button {
-    /* background-color: #28a745;
-    color: white;
-    border: none; */
     color: #28a745;
     text-decoration: none;
     border: 1px solid #28a745;
@@ -100,9 +92,6 @@
   }
 
   .cancel-button {
-    /* background-color: red;
-    color: white;
-    border: none; */
     color: red;
     text-decoration: none;
     border: 1px solid red;

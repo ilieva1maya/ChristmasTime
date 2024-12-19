@@ -1,142 +1,75 @@
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 75vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f7fa;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/images/slider-01.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 .welcome-image {
-    max-width: 46%;
-    height: auto
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.welcome-message {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  color: red;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .welcome-message p {
-    font-size: 1.2rem;    
-        color: #333;
- }
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.welcome-message svg {
+  width: 30px;
+  height: 30px;
+  margin: 0 8px;
+  fill: goldenrod;
+  color: goldenrod;
+}
 
 .welcome-message a {
-    color: red;
-    text-decoration: none;  
-    font-weight: bold;
+  color: goldenrod;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-svg {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-    vertical-align: middle;
-    fill: goldenrod;
-    color: goldenrod;
-} */
-
-/* My CSS */
-
-/* .container {
-    display: flex;
+.welcome-message a:hover {
+  text-decoration: underline;
 }
-
-img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-button {
-    background-color: blue;
-    color: aquamarine;
-} */
-
-/* Resetting some defaults */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f7fa;
-  }
-  
-  /* Container for the background image and message */
-  .container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-image: url(../../assets/images/slider-01.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  /* Style for the welcome image */
-  .welcome-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures image fills the space without stretching */
-    opacity: 0.5; /* Dim the image so the text stands out */
-  }
-  
-  /* Styling the welcome message */
-  /* .welcome-message {
-    position: absolute;    
-    text-align: center;
-    color: #fff;
-    font-size: 1.5rem;
-    padding: 20px;
-    max-width: 600px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6); 
-    border-radius: 8px;
-  } */
-
-  .welcome-message {
-    position: absolute;
-    bottom: 20px; /* Adjust this value to move the message box higher or lower */
-    left: 50%;
-    transform: translateX(-50%); /* Centers the message box horizontally */
-    text-align: center;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0); /* Transparent background for text contrast */
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    color: red;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
-}
-  
-  .welcome-message p {
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-  }
-  
-  .welcome-message svg {
-    width: 30px;
-    height: 30px;
-    margin: 0 8px;
-    fill: goldenrod;
-    color: goldenrod;
-  }
-  
-  .welcome-message a {
-    color: goldenrod; /* Yellow for better visibility */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .welcome-message a:hover {
-    text-decoration: underline;
-  }
-
-  

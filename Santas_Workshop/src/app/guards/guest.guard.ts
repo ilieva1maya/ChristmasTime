@@ -16,11 +16,11 @@ export class GuestGuard implements CanActivate {
     
     if (!this.userService.isLogged) {
       return true;  
-    }
+    };
 
-    window.alert("You are logged in!")
+    window.alert("You are logged in!");
 
     this.router.navigate(['/warehouse']);
     return false;
-  }
+  };
 }
