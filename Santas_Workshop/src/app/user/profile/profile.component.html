@@ -15,18 +15,15 @@
                 <button class="edit-button" (click)="onToggle()">Edit</button>
             </ng-container>
 
-            <!-- [disabled]="form.invalid"
-        [style]="{backgroundColor: form.invalid ? 'grey' : 'rgb(111, 77, 77)'}" -->
-
             <ng-container *ngIf="showEditMode">
                 <form [formGroup]="form">
                     <div class="edit-form">
-                            <p>Image</p>
-                            <input type="text" name="image" id="image" [value]="profileDetails.image"
+                        <p>Image</p>
+                        <input type="text" name="image" id="image" [value]="profileDetails.image"
                             formControlName="image">
-                            <p>NickName: </p>
-                            <input type="text" name="nickName" id="nickName" [value]="profileDetails.nickName"
-                                formControlName="nickName">
+                        <p>NickName: </p>
+                        <input type="text" name="nickName" id="nickName" [value]="profileDetails.nickName"
+                            formControlName="nickName">
                         <ng-container *ngIf="form.get('nickName')?.touched">
                             <p class="error" *ngIf="form.get('nickName')?.errors?.['required']">
                                 NickName is required!
@@ -34,17 +31,18 @@
                             <p class="error" *ngIf="form.get('nickName')?.errors?.['minlength']">
                                 NickName must be at least 5 characters!
                             </p>
-                        </ng-container>  
-                            <p>Height: </p>
-                            <input type="number" name="height" id="height" [value]="profileDetails.height"
-                                formControlName="height">
+                        </ng-container>
+                        <p>Height: </p>
+                        <input type="number" name="height" id="height" [value]="profileDetails.height"
+                            formControlName="height">
                         <ng-container *ngIf="form.get('height')?.touched">
                             <p class="error" *ngIf="form.get('height')?.errors?.['required']">
                                 Height is required!
                             </p>
                         </ng-container>
-                            <p>Email: </p>
-                            <input type="email" name="email" id="email" [value]="profileDetails.email" formControlName="email">
+                        <p>Email: </p>
+                        <input type="email" name="email" id="email" [value]="profileDetails.email"
+                            formControlName="email">
                         <ng-container *ngIf="form.get('email')?.touched">
                             <p class="error" *ngIf="form.get('email')?.errors?.['required']">
                                 Email is required!
@@ -54,12 +52,11 @@
                             </p>
                         </ng-container>
                     </div>
-                <button class="green-button" (click)="saveProfileHandler()" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : 'green'}">Save</button>
-                <button class="red-button" (click)="onCancel($event)">Cancel</button>
+                    <button class="green-button" (click)="saveProfileHandler()" [disabled]="form.invalid"
+                        [style]="{backgroundColor: form.invalid ? 'grey' : 'green'}">Save</button>
+                    <button class="red-button" (click)="onCancel($event)">Cancel</button>
                 </form>
             </ng-container>
         </div>
     </div>
 </div>
-
-

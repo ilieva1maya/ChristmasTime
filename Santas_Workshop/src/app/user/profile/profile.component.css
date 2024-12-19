@@ -1,4 +1,3 @@
-/* General reset and body styling */
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +22,6 @@ body {
     height: 100%;
 }
 
-/* Profile container */
 .profile-container {
     width: 100%;
     max-width: 400px;
@@ -33,7 +31,6 @@ body {
     align-items: center;
 }
 
-/* Profile card styling */
 .profile-card {
     background-color: #fff;
     border-radius: 10px;
@@ -42,13 +39,11 @@ body {
     width: 100%;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Allow space between content and button */
-    align-items: center; /* Center the button horizontally */
-    height: auto; /* Let the height adjust according to content */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
 }
-
-/* Profile image */
 
 .profile-image {
     width: 120px;
@@ -56,7 +51,6 @@ body {
     border: 1px solid #2c3e50;
 }
 
-/* Profile details */
 .profile-details {
     margin-bottom: 20px;
 }
@@ -73,7 +67,6 @@ body {
     margin-top: 5px;
 }
 
-/* Contact info section */
 .profile-contact {
     margin-top: 10px;
     font-size: 1rem;
@@ -84,7 +77,6 @@ body {
     margin: 5px 0;
 }
 
-/* Button group styling */
 button {
     outline: none !important;
     border: none;
@@ -95,7 +87,6 @@ button:hover {
     cursor: pointer;
 }
 
-/* Edit button */
 .edit-button {
     font-family: Montserrat-Bold;
     font-size: 15px;
@@ -117,8 +108,6 @@ button:hover {
     transition: all 0.4s;
 }
 
-
-/* General reset and body styling */
 * {
     margin: 0;
     padding: 0;
@@ -135,28 +124,25 @@ body {
     margin: 0;
 }
 
-/* Form container */
 .edit-form {
     display: flex;
     flex-direction: column;
-    gap: 5px;  /* Space between each input field */
+    gap: 5px;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;  /* Limit max width */
+    max-width: 400px;
     margin: 20px;
 }
 
-/* Label styling */
 .edit-form p {
     font-size: 1rem;
     color: #333;
     margin-bottom: 5px;
 }
 
-/* Input field styling */
 .edit-form input {
     padding: 5px;
     font-size: 1rem;
@@ -166,21 +152,19 @@ body {
     width: 100%;
 }
 
-/* Input field focus state */
 .edit-form input:focus {
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
 }
 
-/* Error message styling */
+
 .error {
     text-align: left;
     border-radius: 0.3em;
     color: red;
     padding-top: 0;
-  }
+}
 
-/* Button group styling */
 button {
     outline: none !important;
     border: none;
@@ -191,14 +175,14 @@ button:hover {
     cursor: pointer;
 }
 
-/* Save button */
+
 .green-button {
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 5px;
     background-color: #4CAF50;
     color: white;
-    width: 48%;  /* Button takes up almost half of the width */
+    width: 48%;
     transition: background-color 0.3s ease;
 }
 
@@ -207,14 +191,13 @@ button:hover {
     cursor: not-allowed;
 }
 
-/* Cancel button */
 .red-button {
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 5px;
     background-color: #f44336;
     color: white;
-    width: 48%;  /* Button takes up almost half of the width */
+    width: 48%;
     transition: background-color 0.3s ease;
 }
 
@@ -222,14 +205,12 @@ button:hover {
     background-color: #d32f2f;
 }
 
-/* Flex container for the buttons */
 button-group {
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
     .edit-form {
         padding: 15px;
@@ -240,14 +221,13 @@ button-group {
         padding: 8px;
     }
 
-    .green-button, .red-button {
-        width: 100%;  /* Stack buttons on small screens */
+    .green-button,
+    .red-button {
+        width: 100%;
     }
 }
 
 
-
-/* Responsive design */
 @media screen and (max-width: 768px) {
     .profile-card {
         padding: 15px;
@@ -267,6 +247,6 @@ button-group {
     }
 
     .edit-button {
-        width: 40%; /* Adjust button width for smaller screens */
+        width: 40%;
     }
 }

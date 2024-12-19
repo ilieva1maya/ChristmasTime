@@ -34,12 +34,8 @@ export class WarehouseComponent implements OnInit {
         console.log('No presents');
         
       }
-      
-          
 
       // this.isLoading = false;
     })
   }
 }
-
-

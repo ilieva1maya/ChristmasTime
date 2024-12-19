@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from 'src/app/api.service';
-import { Present, UpdatePresent } from 'src/app/types/present';
+import { Present } from 'src/app/types/present';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -91,8 +91,6 @@ export class DetailsPresentComponent implements OnInit {
 
   finishPresent(): void {
     const owner = this.present.owner;
-    console.log(owner, this.userService.user?._id)
-
-    this.apiService.deletePresent(this.id!)
+    this.apiService.deletePresent(this.id!);
   }
 }

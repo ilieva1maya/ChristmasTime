@@ -10,7 +10,6 @@ import { emailValidator } from '../utils/email-validator';
       useExisting: EmailDirective,
       multi: true,
     }
-
   ]
 })
 
@@ -31,15 +30,3 @@ export class EmailDirective implements Validator, OnChanges {
     }
   }
 }
-
-// По-опростен вариант с орязани функционалности
-// export class EmailDirective implements Validator {
-//   @Input() appEmail: string[] = [];
-  
-//   constructor() { }
-
-//   validate(control: AbstractControl): ValidationErrors | null {
-//     const validatorFn = emailValidator(this.appEmail)
-//     return validatorFn(control);
-//   }  
-// }

@@ -47,7 +47,7 @@ export class ReservePresentComponent implements OnInit {
           console.log(this.reservations)
 
           this.reservations.forEach(reservation => {
-            console.log("Reservation NickName:", reservation.nickName);  // logging each reservation's nickName
+            console.log("Reservation NickName:", reservation.nickName);
           });
         },
         error: (err) => {

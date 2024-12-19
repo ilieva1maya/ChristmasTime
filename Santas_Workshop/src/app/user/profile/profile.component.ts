@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit{
 
   saveProfileHandler(): void {
     if(this.form.invalid) {
-      console.log('form invalid')
+      console.log('form invalid');
       return;
     }
 
@@ -62,13 +62,13 @@ export class ProfileComponent implements OnInit{
     const {nickName, email, image, height} = this.profileDetails;
 
     this.userService.updateProfile(nickName, email, image, height).subscribe(()=>{
-      console.log("enter in userService.updateProfile")
+      console.log("enter in userService.updateProfile");
       this.onToggle();
     });    
   }
 
   onCancel(e: Event) {
-    e.preventDefault()
-    this.onToggle()
-  }
+    e.preventDefault();
+    this.onToggle();
+  };
 }
